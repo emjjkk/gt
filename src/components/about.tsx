@@ -83,7 +83,7 @@ export default function About(): JSX.Element {
             <>
               {!isEditing ? (
                 <>
-                  <p className="text-[var(--clr-ebony)] text-lg leading-relaxed whitespace-pre-line">
+                  <p className="text-black/70 text-lg leading-relaxed whitespace-pre-line">
                     {about.text}
                   </p>
 
@@ -144,7 +144,7 @@ export default function About(): JSX.Element {
         <img
           src="/images/1.jpeg"
           alt="Granddad"
-          className="h-[720px] md:w-1/2 object-cover mt-5 md:mt-0 grayscale-0 hover:grayscale-70 hover:scale-[1.01] hover:shadow-lg/75"
+          className="h-[720px] md:w-1/2 object-cover mt-5 md:mt-0 grayscale-0 hover:grayscale-50 hover:scale-[1.01] hover:shadow-lg/75"
         />
       </div>
     </section>

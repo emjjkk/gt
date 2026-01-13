@@ -11,10 +11,10 @@ body{
 
 /* Colors */
 :root{
-    --clr-ebony: #2e2f5f;
+    --clr-ebony: #08416d;
     --clr-white: #f8faf9f5;
     --clr-sand:#D9D3C6;
-    --clr-celadon: #6c7fc0;
+    --clr-celadon: #0b7fd5;
 }
 
 /* Hide scrollbars*/
