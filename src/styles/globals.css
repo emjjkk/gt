@@ -25,3 +25,8 @@ body{
   transition: 0.5s;
   scroll-behavior: smooth;
 }
+
+/* Box shadow */
+.shadow-custom{
+  box-shadow: 20px 20px 5px 0px rgba(0,0,0,0.75);
+}

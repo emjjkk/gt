@@ -40,6 +40,8 @@ export default function Gallery(): JSX.Element {
     }, []);
 
     // Handle upload
+    /* Aiya can you help me here i don't know how to do this shitty ass fuck the uploads keep saying violates RLS*/
+    // lol i got u
     const handleUpload = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setUploading(true);
