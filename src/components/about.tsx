@@ -144,7 +144,7 @@ export default function About(): JSX.Element {
         <img
           src="/images/1.jpeg"
           alt="Granddad"
-          className="h-auto md:w-1/2 object-cover mt-5 md:mt-0 grayscale-50 hover:grayscale-0"
+          className="h-[720px] md:w-1/2 object-cover mt-5 md:mt-0 grayscale-0 hover:grayscale-70 hover:scale-[1.01]"
         />
       </div>
     </section>
