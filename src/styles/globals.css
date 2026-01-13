@@ -4,12 +4,17 @@
 body, .font-hanken-grotesk {font-family: 'Hanken Grotesk', sans-serif;}
 .font-domine {font-family: 'Domine', serif;}
 
+body{
+  background-image: url('https://img.freepik.com/free-vector/beautiful-floral-seamless-pattern-element-design-invitation-card_1416-370.jpg?semt=ais_hybrid&w=740&q=80');
+  background-repeat: repeat;
+}
+
 /* Colors */
 :root{
-    --clr-ebony: #2F362F;
-    --clr-white: #F8FAF9;
+    --clr-ebony: #2e2f5f;
+    --clr-white: #f8faf9f5;
     --clr-sand:#D9D3C6;
-    --clr-celadon: #788978;
+    --clr-celadon: #6c7fc0;
 }
 
 /* Hide scrollbars*/
@@ -17,4 +22,6 @@ body, .font-hanken-grotesk {font-family: 'Hanken Grotesk', sans-serif;}
   ::-webkit-scrollbar {display: none;}
   -ms-overflow-style: none; 
   scrollbar-width: none; 
+  transition: 0.5s;
+  scroll-behavior: smooth;
 }

@@ -35,7 +35,7 @@ export default function Funeral(): JSX.Element {
 
     if (loading) {
         return (
-            <section className="bg-[var(--clr-white)] w-full flex justify-center">
+            <section id="funeral" className="bg-[var(--clr-white)] w-full flex justify-center">
                 <div className="py-20 max-w-7xl w-full border-t border-[var(--clr-celadon)] text-center">
                     <h2 className="text-4xl font-domine mb-5 text-center">
                         Funeral Details

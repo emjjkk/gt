@@ -62,7 +62,7 @@ export default function ThoughtsPrayers(): JSX.Element {
     };
 
     return (
-        <section className="bg-[var(--clr-white)] w-full flex justify-center">
+        <section id="thoughts" className="bg-[var(--clr-white)] w-full flex justify-center">
             <div className="py-20 max-w-7xl w-full border-t border-[var(--clr-celadon)]">
                 <div className="max-w-3xl mx-auto px-6">
                     <h2 className="text-4xl font-domine mb-10 text-center">

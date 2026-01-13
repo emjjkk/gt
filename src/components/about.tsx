@@ -66,11 +66,11 @@ export default function About(): JSX.Element {
   };
 
   return (
-    <section id="about" className="flex justify-center bg-[var(--clr-white)] px-5">
+    <section id="about" className="flex justify-center bg-[var(--clr-white)] bg-opacity-50 px-5">
       <div className="min-h-[50vh] w-full max-w-7xl py-20 border-t border-[var(--clr-celadon)] md:flex justify-between gap-10">
         <div className="md:w-1/2">
-          <h1 className="text-4xl font-domine mb-10">
-            The Story of a Life Well Lived
+          <h1 className="text-5xl font-domine mb-10">
+            The Story and Legacy of a Life Well Lived
           </h1>
 
           {loading && (
@@ -97,7 +97,7 @@ export default function About(): JSX.Element {
                       onClick={() => setIsEditing(true)}
                       className="text-blue-500 text-sm flex items-center gap-1 hover:underline"
                     >
-                      <i className="fa-solid fa-pencil"></i> Suggest an edit
+                     { /*<i className="fa-solid fa-pencil"></i> Suggest an edit*/}
                     </button>
                   </div>
                 </>
@@ -142,9 +142,9 @@ export default function About(): JSX.Element {
         </div>
 
         <img
-          src="https://www.svgrepo.com/show/508699/landscape-placeholder.svg"
-          alt="About visual"
-          className="h-auto md:w-1/2 object-cover mt-5 md:mt-0"
+          src="/images/1.jpeg"
+          alt="Granddad"
+          className="h-auto md:w-1/2 object-cover mt-5 md:mt-0 grayscale-50 hover:grayscale-0"
         />
       </div>
     </section>

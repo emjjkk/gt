@@ -138,7 +138,7 @@ export default function Gallery(): JSX.Element {
     };
 
     return (
-        <section className="bg-[var(--clr-white)] flex justify-center">
+        <section id="gallery" className="bg-[var(--clr-white)] flex justify-center">
             <div className="w-full max-w-7xl border-t border-[var(--clr-celadon)] py-20 text-center">
                 <h2 className="text-4xl font-domine mb-5 text-center">Photo Gallery</h2>
                 <p className="text-md text-center mb-7">

@@ -12,11 +12,11 @@ import Funeral from '../components/funeral'
 			<div class="flex items-center gap-1">
 				<i class="fa-solid fa-ribbon text-xl text-[var(--clr-celadon)]"></i>
 			</div>
-			<div class="hidden md:flex items-center gap-3">
-				<a href="#" class="text-md">Story</a>
-				<a href="#" class="text-md">Gallery</a>
-				<a href="#" class="text-md">Thoughts & Prayers</a>
-				<a href="#" class="text-md">Funeral</a>
+			<div class="hidden md:flex items-center gap-6">
+				<a href="#about" class="text-lg">Story</a>
+				<a href="#gallery" class="text-lg">Gallery</a>
+				<a href="#thoughts" class="text-lg">Thoughts & Prayers</a>
+				<a href="#funeral" class="text-lg">Funeral</a>
 			</div>
 			<!-- Mobile menu button -->
 			<button id="mobile-menu-btn" class="md:hidden text-2xl">
@@ -25,18 +25,19 @@ import Funeral from '../components/funeral'
 		</header>
 		<!-- Mobile menu -->
 		<nav id="mobile-menu" class="hidden fixed top-16 right-4 bg-white shadow-lg rounded-lg p-4 z-20 md:hidden">
-			<div class="flex flex-col gap-3">
-				<a href="#" class="text-md py-2">Story</a>
-				<a href="#" class="text-md py-2">Gallery</a>
-				<a href="#" class="text-md py-2">Thoughts & Prayers</a>
-				<a href="#" class="text-md py-2">Funeral</a>
+			<div class="flex flex-col gap-2">
+				<a href="#" class="text-lg py-2">Story</a>
+				<a href="#" class="text-lg py-2">Gallery</a>
+				<a href="#" class="text-lg py-2">Thoughts & Prayers</a>
+				<a href="#" class="text-lg py-2">Funeral</a>
 			</div>
 		</nav>
 	</section>
-	<section id="hero" class="relative flex flex-col items-center justify-center min-h-screen bg-[var(--clr-white)] gap-5 px-4 sm:px-6 lg:px-8">
-		<h1 class="text-sm sm:text-base lg:text-lg text-[var(--clr-ebony)] text-center">This is a tribute page created in loving memory of</h1>
-		<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-domine text-center">Michael Oladosu Alabi (1933 - 2026)</h1>
-		<h1 class="text-sm sm:text-base lg:text-lg text-[var(--clr-ebony)] text-center">He is much loved and forever remembered by us all.</h1>
+	<section id="hero" class="relative flex flex-col items-center justify-center min-h-screen bg-[url('/images/4.jpeg')] bg-cover bg-center bg-fixed gap-12 px-4 sm:px-6 lg:px-8">
+		<div class="absolute w-full h-full bg-gradient-to-b from-white/30 to-[var(--clr-white)]"></div>
+		<h1 class="text-sm sm:text-base lg:text-lg text-[var(--clr-ebony)] text-center z-[5]">This is a tribute page created in loving memory of</h1>
+		<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-domine text-center z-[5]">Michael Oladosu Alabi (1933 - 2026)</h1>
+		<h1 class="text-sm sm:text-base lg:text-lg text-[var(--clr-ebony)] text-center z-[5]">He is much loved and forever remembered by us all.</h1>
 	</section>
 	<About client:load />
 	<Gallery client:load />
