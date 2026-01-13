@@ -1,0 +1,75 @@
+---
+import Layout from "../layouts/layout.astro";
+import About from "../components/about.tsx"
+import Gallery from '../components/gallery.tsx'
+import Thoughts from '../components/thoughts.tsx'
+import Funeral from '../components/funeral'
+---
+
+<Layout>
+	<section class="w-full flex items-center justify-center">
+		<header class="flex items-center justify-between w-full max-w-7xl mx-auto py-5 px-4 md:px-0 lg:px-8 absolute top-0 z-[10]">
+			<div class="flex items-center gap-1">
+				<i class="fa-solid fa-ribbon text-xl text-[var(--clr-celadon)]"></i>
+			</div>
+			<div class="hidden md:flex items-center gap-3">
+				<a href="#" class="text-md">Story</a>
+				<a href="#" class="text-md">Gallery</a>
+				<a href="#" class="text-md">Thoughts & Prayers</a>
+				<a href="#" class="text-md">Funeral</a>
+			</div>
+			<!-- Mobile menu button -->
+			<button id="mobile-menu-btn" class="md:hidden text-2xl">
+				<i class="fa-solid fa-bars"></i>
+			</button>
+		</header>
+		<!-- Mobile menu -->
+		<nav id="mobile-menu" class="hidden fixed top-16 right-4 bg-white shadow-lg rounded-lg p-4 z-20 md:hidden">
+			<div class="flex flex-col gap-3">
+				<a href="#" class="text-md py-2">Story</a>
+				<a href="#" class="text-md py-2">Gallery</a>
+				<a href="#" class="text-md py-2">Thoughts & Prayers</a>
+				<a href="#" class="text-md py-2">Funeral</a>
+			</div>
+		</nav>
+	</section>
+	<section id="hero" class="relative flex flex-col items-center justify-center min-h-screen bg-[var(--clr-white)] gap-5 px-4 sm:px-6 lg:px-8">
+		<h1 class="text-sm sm:text-base lg:text-lg text-[var(--clr-ebony)] text-center">This is a tribute page created in loving memory of</h1>
+		<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-domine text-center">Michael Oladosu Alabi (1933 - 2026)</h1>
+		<h1 class="text-sm sm:text-base lg:text-lg text-[var(--clr-ebony)] text-center">He is much loved and forever remembered by us all.</h1>
+	</section>
+	<About client:load />
+	<Gallery client:load />
+	<Thoughts client:load />
+	<Funeral client:load />
+	<footer class="w-full py-5 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center gap-1 bg-[var(--clr-ebony)] text-[var(--clr-white)]">
+		<p class="text-center text-xs">&copy; 2026 Built by <a target="_blank" href="https://emjjkk.tech" class="text-blue-500 underline">Emmanuel Alabi</a>.</p>
+		<p class="text-center text-xs">In case of problems or required fixes, <a target="_blank" href="mailto:alabiemmanuel029@gmail.com" class="text-blue-500 underline">please contact me immidiately</a>.</p>
+		<p class="text-center text-xs">This page will stay public until 13th January, 2027.</p>
+	</footer>
+</Layout>
+
+<script>
+	// Mobile menu toggle
+	const menuBtn = document.getElementById('mobile-menu-btn');
+	const mobileMenu = document.getElementById('mobile-menu');
+	
+	menuBtn?.addEventListener('click', () => {
+		mobileMenu?.classList.toggle('hidden');
+	});
+
+	// Close mobile menu when clicking outside
+	document.addEventListener('click', (e) => {
+		if (!menuBtn?.contains(e.target as Node) && !mobileMenu?.contains(e.target as Node)) {
+			mobileMenu?.classList.add('hidden');
+		}
+	});
+
+	// Close mobile menu when clicking a link
+	const mobileLinks = mobileMenu?.querySelectorAll('a');
+	mobileLinks?.forEach(link => {
+		link.addEventListener('click', () => {
+			mobileMenu?.classList.add('hidden');
+		});
+	});
+</script>
