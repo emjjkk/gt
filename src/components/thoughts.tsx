@@ -97,10 +97,11 @@ export default function ThoughtsPrayers(): JSX.Element {
                             />
 
                             <input
+                                required
                                 type="text"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                placeholder="Your name (optional)"
+                                placeholder="Your name"
                                 className="p-3 border border-gray-300 rounded-lg w-full"
                             />
 
