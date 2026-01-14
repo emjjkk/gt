@@ -14,6 +14,7 @@ export default function Gallery(): JSX.Element {
     const [activeItem, setActiveItem] = useState<GalleryItem | null>(null);
     const [formVisible, setFormVisible] = useState(false);
     const [uploading, setUploading] = useState(false);
+    const [showAll, setShowAll] = useState(false); // <-- new state
 
     const [title, setTitle] = useState("");
     const [caption, setCaption] = useState("");
@@ -25,7 +26,7 @@ export default function Gallery(): JSX.Element {
             const { data, error } = await supabase
                 .from<GalleryItem>("gallery_items")
                 .select("id, title, caption, image_url, contributed_by")
-                .eq("status", "ok") // <-- only fetch approved items
+                .eq("status", "ok")
                 .order("created_at", { ascending: false });
 
             if (error) {
@@ -40,14 +41,11 @@ export default function Gallery(): JSX.Element {
     }, []);
 
     // Handle upload
-    /* Aiya can you help me here i don't know how to do this shitty ass fuck the uploads keep saying violates RLS*/
-    // lol i got u
     const handleUpload = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setUploading(true);
 
         try {
-            // Grab file directly
             const input = e.currentTarget.querySelector<HTMLInputElement>(
                 'input[type="file"]'
             );
@@ -58,8 +56,6 @@ export default function Gallery(): JSX.Element {
             }
 
             const file = input.files[0];
-            console.log("Uploading file to Supabase:", file.name, file.type, file.size);
-
             if (!(file instanceof File)) {
                 alert("Invalid file object");
                 setUploading(false);
@@ -72,11 +68,9 @@ export default function Gallery(): JSX.Element {
                 return;
             }
 
-            // Unique flat filename
             const fileExt = file.name.split(".").pop();
             const filePath = `${Date.now()}-${Math.floor(Math.random() * 1e6)}.${fileExt}`;
 
-            // Upload to Supabase Storage with explicit contentType
             const { data: uploadData, error: uploadError } = await supabase.storage
                 .from("gallery")
                 .upload(filePath, file, {
@@ -86,9 +80,7 @@ export default function Gallery(): JSX.Element {
                 });
 
             if (uploadError) throw uploadError;
-            console.log("Uploaded file path:", uploadData?.path);
 
-            // 2️⃣ Get public URL
             const { data: urlData, error: urlError } = supabase.storage
                 .from("gallery")
                 .getPublicUrl(filePath);
@@ -96,10 +88,7 @@ export default function Gallery(): JSX.Element {
             if (urlError || !urlData?.publicUrl) throw urlError ?? new Error("Failed to get public URL");
 
             const publicUrl = urlData.publicUrl;
-            console.log("Public URL:", publicUrl);
 
-
-            // Insert into DB
             const { error: insertError } = await supabase.from("gallery_items").insert({
                 title,
                 caption: caption || null,
@@ -109,21 +98,19 @@ export default function Gallery(): JSX.Element {
             });
 
             if (insertError) throw insertError;
-            console.log("Inserted gallery item into DB");
 
             alert("Photo submitted! Pending approval.");
 
-            // Reset form
             setTitle("");
             setCaption("");
             setContributedBy("");
-            input.value = ""; // reset file input
+            if (input) input.value = "";
             setFormVisible(false);
 
             // Optimistic update
             setItems((prev) => [
                 {
-                    id: String(Date.now()), // temporary id
+                    id: String(Date.now()),
                     title,
                     caption,
                     image_url: publicUrl,
@@ -209,7 +196,7 @@ export default function Gallery(): JSX.Element {
 
                 {/* Masonry Gallery */}
                 <div className="columns-1 sm:columns-2 lg:columns-4 gap-6 px-6 max-w-7xl mx-auto">
-                    {items.map((item) => (
+                    {(showAll ? items : items.slice(0, 9)).map((item) => (
                         <div
                             key={item.id}
                             className="mb-6 break-inside-avoid cursor-pointer"
@@ -223,6 +210,16 @@ export default function Gallery(): JSX.Element {
                         </div>
                     ))}
                 </div>
+
+                {/* Show All / Show Less Button */}
+                {items.length > 9 && (
+                    <button
+                        onClick={() => setShowAll((prev) => !prev)}
+                        className="mt-10 bg-[var(--clr-celadon)] text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition"
+                    >
+                        {showAll ? "Show Less" : "See All"}
+                    </button>
+                )}
             </div>
 
             {/* Lightbox */}
