@@ -5,14 +5,16 @@ body, .font-hanken-grotesk {font-family: 'Hanken Grotesk', sans-serif;}
 .font-domine {font-family: 'Domine', serif;}
 
 body{
-  background-image: url('https://img.freepik.com/free-vector/beautiful-floral-seamless-pattern-element-design-invitation-card_1416-370.jpg?semt=ais_hybrid&w=740&q=80');
-  background-repeat: repeat;
+  background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20240811/pngtree-scenic-green-rolling-hills-against-the-blue-sky-with-clouds-image_16128338.jpg');
+  background-size: cover;
+  background-position: bottom;
+  background-attachment: fixed;
 }
 
 /* Colors */
 :root{
     --clr-ebony: #08416d;
-    --clr-white: #f8faf9f5;
+    --clr-white: #f8faf9ee;
     --clr-sand:#D9D3C6;
     --clr-celadon: #0b7fd5;
 }

@@ -50,18 +50,10 @@ const { totalVisitors, countries } = await getUmamiStats();
 	<Thoughts client:load />
 	<Funeral client:load />
 	<footer class="w-full py-7 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center gap-1 bg-[var(--clr-ebony)] text-[var(--clr-white)]">
-		<div class="mt-2 flex flex-wrap items-center justify-center gap-3 text-md opacity-90">
-			<p class="text-center text-md">Visited by {totalVisitors.toLocaleString()} people from different countries:</p>
-			<div class="flex flex-wrap items-center justify-center gap-2 text-md opacity-90">
-			{countries.map((c) => (
-				<div id={c.country} class="flex items-center gap-1">
-					<span class={`fi fi-${c.country.toLowerCase()} text-lg rounded-sm`}></span>
-					<span>{c.value}</span>
-				</div>
-			))}
-			</div>
+		<div class="mt-2 flex flex-wrap items-center justify-center gap-3 text-sm opacity-90">
+			<p class="text-center text-md">Visited by {totalVisitors.toLocaleString()} people.</p>
 		</div>
-		<p class="text-center text-md">&copy; 2026 Built by <a target="_blank" href="https://emjjkk.tech" class="text-blue-500 underline">Emmanuel Alabi</a>. For enquiries, you can reach me <a target="_blank" href="mailto:alabiemmanuel029@gmail.com" class="text-blue-500 underline">here</a>. This page will stay public until 13th January, 2027.</p>
+		<p class="text-center text-sm">&copy; 2026 Built by <a target="_blank" href="https://emjjkk.tech" class="text-blue-500 underline">Emmanuel Alabi</a>. For enquiries, you can reach me <a target="_blank" href="mailto:alabiemmanuel029@gmail.com" class="text-blue-500 underline">here</a>. This page will stay public until 13th January, 2027.</p>
 	</footer>
 </Layout>
 
