@@ -69,7 +69,7 @@ export default function About(): JSX.Element {
     <section id="about" className="flex justify-center bg-[var(--clr-white)] bg-opacity-50 px-5">
       <div className="min-h-[50vh] w-full max-w-7xl py-20 border-t border-[var(--clr-celadon)] md:flex justify-between gap-10">
         <div className="md:w-1/2">
-          <h1 className="text-5xl font-domine mb-10">
+          <h1 className="text-4xl font-domine mb-10">
             The Story and Legacy of a Life Well Lived
           </h1>
 
