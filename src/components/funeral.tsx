@@ -53,7 +53,7 @@ export default function Funeral(): JSX.Element {
                     <h2 className="text-3xl 2xl:text-4xl font-domine mb-5 text-center">
                         Funeral Details
                     </h2>
-                    <p>No funeral details have been confirmed as of this moment.</p>
+                    <p>Funeral details to be announced soon.</p>
                 </div>
             </section>
         );
