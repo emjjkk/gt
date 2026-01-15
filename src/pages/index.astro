@@ -40,13 +40,24 @@ const { totalVisitors, countries } = await getUmamiStats();
 				<i class="fa-solid fa-bars"></i>
 			</button>
 		</header>
+
 		<!-- Mobile menu -->
 		<nav id="mobile-menu" class="hidden fixed top-16 right-4 bg-white shadow-lg rounded-lg p-4 z-20 md:hidden">
 			<div class="flex flex-col gap-2">
-				<a href="#" class="text-lg py-2">Story</a>
-				<a href="#" class="text-lg py-2">Gallery</a>
-				<a href="#" class="text-lg py-2">Thoughts & Prayers</a>
-				<a href="#" class="text-lg py-2">Funeral</a>
+				<a href="#about" class="text-lg py-1">Story</a>
+				<a href="#gallery" class="text-lg py-1">Gallery</a>
+				<a href="#thoughts" class="text-lg py-1">Thoughts & Prayers</a>
+				<a href="#" class="text-lg py-1">Funeral</a>
+				<button
+					class="cursor-pointer text-lg"
+					onclick="
+					document.documentElement.classList.toggle('dark');
+					this.querySelector('i').classList.toggle('fa-toggle-off');
+					this.querySelector('i').classList.toggle('fa-toggle-on');
+				"
+				>
+				<i class="fa-solid fa-toggle-off"></i>
+				</button>
 			</div>
 		</nav>
 	</section>

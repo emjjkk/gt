@@ -85,7 +85,7 @@ export default function ThoughtsPrayers(): JSX.Element {
 
                 {/* Collapsible Form */}
                 <div
-                    className={`overflow-hidden transition-all w-2xl duration-300 ${formVisible ? "max-h-[500px]" : "max-h-0"
+                    className={`overflow-hidden transition-all w-full max-w-2xl duration-300 ${formVisible ? "max-h-[500px]" : "max-h-0"
                         }`}
                 >
                     <form
