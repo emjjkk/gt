@@ -22,6 +22,27 @@ import "../styles/globals.css";
     </head>
 	<body class="hs">
 		<main><slot /></main>
+         <script>
+            const header = document.getElementById("site-header");
+
+            const onScroll = () => {
+                if (window.scrollY > 20) {
+                header?.classList.add(
+                    "bg-white",
+                    "shadow-sm",
+                    "dark:bg-neutral-950"
+                );
+                } else {
+                header?.classList.remove(
+                    "bg-white",
+                    "shadow-sm",
+                    "dark:bg-neutral-950"
+                );
+                }
+            };
+
+            window.addEventListener("scroll", onScroll);
+        </script>
         <script defer src="https://cloud.umami.is/script.js" data-website-id="d6387639-98fd-44be-87a6-11545f4e487f"></script>
 	</body>
 </html>

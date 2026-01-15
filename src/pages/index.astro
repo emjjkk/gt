@@ -13,8 +13,8 @@ const { totalVisitors, countries } = await getUmamiStats();
 ---
 
 <Layout>
-	<section class="w-full flex items-center justify-center">
-		<header class="flex items-center justify-between w-full max-w-6xl 2xl:max-w-7xl mx-auto py-5 px-4 sm:px-0 lg:px-8 absolute top-0 z-[10]">
+	<section id="site-header" class="fixed top-0 z-[50] inset-x-0 w-full flex items-center justify-center">
+		<header class=" flex items-center justify-between w-full max-w-6xl 2xl:max-w-7xl mx-auto py-5 px-4 md:px-0 md:px-8">
 			<div class="flex items-center gap-1">
 				<i class="fa-solid fa-ribbon text-3xl text-[var(--clr-celadon)]"></i>
 			</div>
@@ -23,9 +23,17 @@ const { totalVisitors, countries } = await getUmamiStats();
 				<a href="#gallery" class="text-md 2xl:text-lg">Gallery</a>
 				<a href="#thoughts" class="text-md 2xl:text-lg">Thoughts & Prayers</a>
 				<a href="#funeral" class="text-md 2xl:text-lg">Funeral</a>
-				<button onclick="document.documentElement.classList.toggle('dark')">
-  					<i class="fa-solid fa-moon"></i>
+				<button
+					class="cursor-pointer text-lg"
+					onclick="
+					document.documentElement.classList.toggle('dark');
+					this.querySelector('i').classList.toggle('fa-toggle-off');
+					this.querySelector('i').classList.toggle('fa-toggle-on');
+				"
+				>
+				<i class="fa-solid fa-toggle-off"></i>
 				</button>
+
 			</div>
 			<!-- Mobile menu button -->
 			<button id="mobile-menu-btn" class="md:hidden text-2xl">
@@ -42,11 +50,12 @@ const { totalVisitors, countries } = await getUmamiStats();
 			</div>
 		</nav>
 	</section>
-	<section id="hero" class="dark:text-white relative flex flex-col items-center justify-center min-h-screen bg-[url('/images/4.jpeg')] bg-cover bg-center bg-fixed gap-12 px-4 sm:px-6 lg:px-8">
+	<section id="hero" class="dark:text-white relative flex flex-col items-center justify-center min-h-screen bg-[url('/images/4.jpeg')] bg-cover bg-center bg-fixed gap-8 px-4 sm:px-6 lg:px-8">
 		<div class="absolute w-full h-full bg-gradient-to-b dark:from-black/30 from-white/30 to-[var(--clr-white)] dark:to-black/[0.98]"></div>
 		<h1 class="text-sm sm:text-base lg:text-lg text-[var(--clr-ebony)] dark:text-white  text-center z-[5] animate__animated animate__fadeInUp">This is a tribute page created in loving memory of</h1>
 		<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-domine text-center z-[5] animate__animated animate__fadeInUp">Michael Oladosu Alabi (1933 - 2026)</h1>
 		<h1 class="text-sm sm:text-base lg:text-lg text-[var(--clr-ebony)] dark:text-white  text-center z-[5] animate__animated animate__fadeInUp">He is much loved and forever remembered by us all.</h1>
+		<h2 class="text-md absolute bottom-10 italic text-center">"Jesus said unto her, I am the resurrection, and the life: he that believeth in me, though he were dead, yet shall he live" - John 11:25 (KJV)</h2>
 	</section>
 	<About client:load />
 	<Gallery client:load />
@@ -56,9 +65,11 @@ const { totalVisitors, countries } = await getUmamiStats();
 		<div class="mt-2 flex flex-wrap items-center justify-center gap-3 text-sm opacity-90">
 			<p class="text-center text-md">Visited by {totalVisitors.toLocaleString()} people.</p>
 		</div>
-		<p class="text-center text-sm">&copy; 2026 Built by <a target="_blank" href="https://emjjkk.tech" class="text-blue-500 underline">Emmanuel Alabi</a>. For enquiries, you can reach me <a target="_blank" href="mailto:alabiemmanuel029@gmail.com" class="text-blue-500 underline">here</a>. This page will stay public until 13th January, 2027.</p>
+		<p class="text-center text-sm">&copy; 2026. Web developer: <a target="_blank" href="https://emjjkk.tech" class="text-blue-500 underline">Emmanuel Alabi</a>. Enquiries: <a target="_blank" href="mailto:alabiemmanuel029@gmail.com" class="text-blue-500 underline">here</a>.<br/> This page will stay public until 13th January, 2027.</p>
 	</footer>
 </Layout>
+
+
 
 <script>
 	// Mobile menu toggle
