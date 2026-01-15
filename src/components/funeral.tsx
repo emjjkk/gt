@@ -35,9 +35,9 @@ export default function Funeral(): JSX.Element {
 
     if (loading) {
         return (
-            <section id="funeral" className="bg-[var(--clr-white)] w-full flex justify-center">
-                <div className="py-20 max-w-7xl w-full border-t border-[var(--clr-celadon)] text-center">
-                    <h2 className="text-4xl font-domine mb-5 text-center">
+            <section id="funeral" className="dark:text-white dark:bg-black/[0.98] bg-[var(--clr-white)] w-full flex justify-center">
+                <div className="py-20 max-w-6xl 2xl:max-w-7xl w-full border-t dark:border-slate-800 border-[var(--clr-celadon)] text-center">
+                    <h2 className="text-3xl 2xl:text-4xl font-domine mb-5 text-center">
                         Funeral Details
                     </h2>
                     <p>Loading funeral details...</p>
@@ -48,9 +48,9 @@ export default function Funeral(): JSX.Element {
 
     if (!funeral) {
         return (
-            <section className="bg-[var(--clr-white)] w-full flex justify-center">
-                <div className="py-20 max-w-7xl w-full border-t border-[var(--clr-celadon)] text-center">
-                    <h2 className="text-4xl font-domine mb-5 text-center">
+            <section className="dark:text-white dark:bg-black/[0.98] bg-[var(--clr-white)] w-full flex justify-center">
+                <div className="py-20 max-w-7xl w-full border-t dark:border-slate-800 border-[var(--clr-celadon)] text-center">
+                    <h2 className="text-3xl 2xl:text-4xl font-domine mb-5 text-center">
                         Funeral Details
                     </h2>
                     <p>No funeral details have been confirmed as of this moment.</p>
@@ -60,9 +60,9 @@ export default function Funeral(): JSX.Element {
     }
 
     return (
-        <section className="py-20 bg-[var(--clr-white)] border-t border-[var(--clr-celadon)]">
+        <section className="dark:text-white dark:bg-black/[0.98] py-20 bg-[var(--clr-white)] border-t dark:border-slate-800 border-[var(--clr-celadon)]">
             <div className="max-w-3xl mx-auto px-6 text-center">
-                <h2 className="text-4xl font-domine mb-10">Funeral Details</h2>
+                <h2 className="text-3xl 2xl:text-4xl font-domine mb-10">Funeral Details</h2>
 
                 {funeral.status === "pending" && (
                     <p className="text-gray-700 text-lg">

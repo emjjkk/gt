@@ -66,9 +66,9 @@ export default function ThoughtsPrayers(): JSX.Element {
     const visibleEntries = showAll ? entries : entries.slice(0, 8);
 
     return (
-        <section id="thoughts" className="bg-[var(--clr-white)] w-full flex justify-center">
-            <div className="py-20 max-w-7xl w-full flex flex-col items-center border-t border-[var(--clr-celadon)]">
-                <h2 className="text-4xl font-domine mb-10 text-center">
+        <section id="thoughts" className="dark:text-white dark:bg-black/[0.98] bg-[var(--clr-white)] w-full flex justify-center px-5">
+            <div className="py-20 max-w-6xl 2xl:max-w-7xl w-full flex flex-col items-center border-t dark:border-slate-800 border-[var(--clr-celadon)]">
+                <h2 className="text-3xl 2xl:text-4xl font-domine mb-10 text-center">
                     Thoughts & Prayers
                 </h2>
 
@@ -135,10 +135,10 @@ export default function ThoughtsPrayers(): JSX.Element {
                             {visibleEntries.map((entry) => (
                                 <div
                                     key={entry.id}
-                                    className="break-inside-avoid p-6 border border-gray-200 rounded-lg bg-gray-50 shadow-sm mb-5"
+                                    className="break-inside-avoid p-6 border border-gray-200 dark:border-neutral-800 rounded-lg bg-gray-50 dark:bg-neutral-950 shadow-sm mb-5"
                                 >
-                                    <p className="text-gray-800">{entry.message}</p>
-                                    <p className="text-sm text-gray-500 mt-2">
+                                    <p className="text-gray-800 dark:text-white">{entry.message}</p>
+                                    <p className="text-sm text-gray-500 dark:text-white/90 mt-2">
                                         {entry.name ? `— ${entry.name}, ` : ""}
                                         {new Date(entry.created_at).toLocaleDateString()}
                                     </p>

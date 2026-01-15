@@ -127,9 +127,9 @@ export default function Gallery(): JSX.Element {
     };
 
     return (
-        <section id="gallery" className="bg-[var(--clr-white)] flex justify-center">
-            <div className="w-full max-w-7xl border-t border-[var(--clr-celadon)] py-20 text-center">
-                <h2 className="text-4xl font-domine mb-5 text-center">Photo Gallery</h2>
+        <section id="gallery" className="dark:text-white dark:bg-black/[0.98] bg-[var(--clr-white)] flex justify-center px-5">
+            <div className="w-full max-w-6xl 2xl:max-w-7xl border-t border-[var(--clr-celadon)] dark:border-slate-800 py-20 text-center">
+                <h2 className="text-3xl 2xl:text-4xl font-domine mb-5 text-center">Photo Gallery</h2>
                 <p className="text-md text-center mb-7">
                     Photos contributed by the many family and acquaintances who were
                     impacted by his legacy.
@@ -225,24 +225,24 @@ export default function Gallery(): JSX.Element {
             {/* Lightbox */}
             {activeItem && (
                 <div
-                    className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-6"
+                    className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-6"
                     onClick={() => setActiveItem(null)}
                 >
                     <div
-                        className="bg-white max-w-3xl w-full rounded-lg overflow-hidden"
+                        className="max-w-3xl w-full rounded-lg overflow-hidden"
                         onClick={(e) => e.stopPropagation()}
                     >
                         <img
                             src={activeItem.image_url}
                             alt={activeItem.title}
-                            className="w-full max-h-[70vh] object-contain bg-black"
+                            className="w-full max-h-[95vh] mt-3 object-contain"
                         />
 
-                        <div className="p-6">
-                            <h3 className="text-2xl font-semibold mb-2">{activeItem.title}</h3>
+                        <div className="hidden md:block absolute top-5 left-5 max-w-lg">
+                            <h3 className="text-2xl font-semibold mb-2 text-white">{activeItem.title}</h3>
 
                             {activeItem.caption && (
-                                <p className="mb-2 text-gray-700">{activeItem.caption}</p>
+                                <p className="mb-2 text-gray-200">{activeItem.caption}</p>
                             )}
 
                             {activeItem.contributed_by && (

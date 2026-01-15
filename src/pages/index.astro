@@ -14,15 +14,18 @@ const { totalVisitors, countries } = await getUmamiStats();
 
 <Layout>
 	<section class="w-full flex items-center justify-center">
-		<header class="flex items-center justify-between w-full max-w-7xl mx-auto py-5 px-4 md:px-0 lg:px-8 absolute top-0 z-[10]">
+		<header class="flex items-center justify-between w-full max-w-6xl 2xl:max-w-7xl mx-auto py-5 px-4 sm:px-0 lg:px-8 absolute top-0 z-[10]">
 			<div class="flex items-center gap-1">
 				<i class="fa-solid fa-ribbon text-3xl text-[var(--clr-celadon)]"></i>
 			</div>
-			<div class="hidden md:flex items-center gap-8">
-				<a href="#about" class="text-lg">Story</a>
-				<a href="#gallery" class="text-lg">Gallery</a>
-				<a href="#thoughts" class="text-lg">Thoughts & Prayers</a>
-				<a href="#funeral" class="text-lg">Funeral</a>
+			<div class="hidden md:flex items-center gap-8 dark:text-white">
+				<a href="#about" class="text-md 2xl:text-lg">Story</a>
+				<a href="#gallery" class="text-md 2xl:text-lg">Gallery</a>
+				<a href="#thoughts" class="text-md 2xl:text-lg">Thoughts & Prayers</a>
+				<a href="#funeral" class="text-md 2xl:text-lg">Funeral</a>
+				<button onclick="document.documentElement.classList.toggle('dark')">
+  					<i class="fa-solid fa-moon"></i>
+				</button>
 			</div>
 			<!-- Mobile menu button -->
 			<button id="mobile-menu-btn" class="md:hidden text-2xl">
@@ -39,11 +42,11 @@ const { totalVisitors, countries } = await getUmamiStats();
 			</div>
 		</nav>
 	</section>
-	<section id="hero" class="relative flex flex-col items-center justify-center min-h-screen bg-[url('/images/4.jpeg')] bg-cover bg-center bg-fixed gap-12 px-4 sm:px-6 lg:px-8">
-		<div class="absolute w-full h-full bg-gradient-to-b from-white/30 to-[var(--clr-white)]"></div>
-		<h1 class="text-sm sm:text-base lg:text-lg text-[var(--clr-ebony)] text-center z-[5]">This is a tribute page created in loving memory of</h1>
-		<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-domine text-center z-[5]">Michael Oladosu Alabi (1933 - 2026)</h1>
-		<h1 class="text-sm sm:text-base lg:text-lg text-[var(--clr-ebony)] text-center z-[5]">He is much loved and forever remembered by us all.</h1>
+	<section id="hero" class="dark:text-white relative flex flex-col items-center justify-center min-h-screen bg-[url('/images/4.jpeg')] bg-cover bg-center bg-fixed gap-12 px-4 sm:px-6 lg:px-8">
+		<div class="absolute w-full h-full bg-gradient-to-b dark:from-black/30 from-white/30 to-[var(--clr-white)] dark:to-black/[0.98]"></div>
+		<h1 class="text-sm sm:text-base lg:text-lg text-[var(--clr-ebony)] dark:text-white  text-center z-[5] animate__animated animate__fadeInUp">This is a tribute page created in loving memory of</h1>
+		<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-domine text-center z-[5] animate__animated animate__fadeInUp">Michael Oladosu Alabi (1933 - 2026)</h1>
+		<h1 class="text-sm sm:text-base lg:text-lg text-[var(--clr-ebony)] dark:text-white  text-center z-[5] animate__animated animate__fadeInUp">He is much loved and forever remembered by us all.</h1>
 	</section>
 	<About client:load />
 	<Gallery client:load />

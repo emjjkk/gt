@@ -66,11 +66,11 @@ export default function About(): JSX.Element {
   };
 
   return (
-    <section id="about" className="flex justify-center bg-[var(--clr-white)] bg-opacity-50 px-5">
-      <div className="min-h-[50vh] w-full max-w-7xl py-20 border-t border-[var(--clr-celadon)] md:flex justify-between gap-10">
-        <div className="md:w-1/2">
-          <h1 className="text-4xl font-domine mb-10">
-            The Story and Legacy of a Life Well Lived
+    <section id="about" className="flex justify-center dark:text-white dark:bg-black/[0.98] bg-[var(--clr-white)] bg-opacity-50 px-6">
+      <div className="min-h-[50vh] w-full max-w-6xl 2xl:max-w-7xl py-20 border-t dark:border-slate-800 border-[var(--clr-celadon)] md:flex justify-between gap-10">
+        <div className="md:w-1/2 animate__animated animate__fadeInLeft">
+          <h1 className="text-3xl 2xl:text-4xl font-domine mb-10">
+            The Story of a Life Well Lived
           </h1>
 
           {loading && (
@@ -83,7 +83,7 @@ export default function About(): JSX.Element {
             <>
               {!isEditing ? (
                 <>
-                  <p className="text-black/70 text-lg leading-relaxed whitespace-pre-line">
+                  <p className="dark:text-white/90 text-black/70 text-md 2x:text-lg leading-relaxed whitespace-pre-line">
                     {about.text}
                   </p>
 
@@ -144,7 +144,7 @@ export default function About(): JSX.Element {
         <img
           src="/images/1.jpeg"
           alt="Granddad"
-          className="h-[720px] md:w-1/2 object-cover mt-5 md:mt-0 grayscale-0 hover:grayscale-50 hover:scale-[1.01] hover:shadow-lg/75"
+          className="h-[650px] 2xl:h-[700px] md:w-1/2 object-cover mt-5 md:mt-0 grayscale-0 hover:grayscale-50 hover:scale-[1.01] hover:shadow-lg/75 animate__animated animate__fadeInRight"
         />
       </div>
     </section>
