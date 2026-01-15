@@ -1,5 +1,6 @@
 import React, { useEffect, useState, type JSX } from "react";
 import { supabase } from "../db/supabase";
+import Cbtn from './cbtn'
 
 type GalleryItem = {
     id: string;
@@ -145,12 +146,12 @@ export default function Gallery(): JSX.Element {
 
                 {/* Collapsible Upload Form */}
                 <div
-                    className={`overflow-hidden transition-all duration-300 ${formVisible ? "max-h-[600px]" : "max-h-0"
+                    className={`text-center overflow-hidden transition-all duration-300 ${formVisible ? "max-h-[600px]" : "max-h-0"
                         } mb-10`}
                 >
                     <form
                         onSubmit={handleUpload}
-                        className="flex flex-col gap-4 mb-12 max-w-xl mx-auto"
+                        className="bg-white dark:bg-neutral-950 p-5 rounded-sm flex flex-col gap-4 mb-12 max-w-xl mx-auto"
                     >
                         <input
                             type="file"
@@ -184,13 +185,7 @@ export default function Gallery(): JSX.Element {
                             className="p-3 border border-gray-300 rounded-lg w-full"
                         />
 
-                        <button
-                            type="submit"
-                            disabled={uploading}
-                            className="bg-[var(--clr-celadon)] text-white py-3 rounded-lg font-semibold hover:opacity-90 transition"
-                        >
-                            {uploading ? "Uploading..." : "Submit Photo"}
-                        </button>
+                        <Cbtn type="submit" text="Submit Photo"/>
                     </form>
                 </div>
 

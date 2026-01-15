@@ -1,5 +1,6 @@
 import React, { useEffect, useState, type JSX } from "react";
 import { supabase } from "../db/supabase";
+import Cbtn from './cbtn'
 
 type ThoughtPrayer = {
     id: string;
@@ -89,7 +90,7 @@ export default function ThoughtsPrayers(): JSX.Element {
                 >
                     <form
                         onSubmit={handleSubmit}
-                        className="flex flex-col gap-4 mb-12"
+                        className="bg-white dark:bg-neutral-950 p-5 rounded-sm flex flex-col gap-4 mb-12"
                     >
                         <textarea
                             value={message}
@@ -107,13 +108,7 @@ export default function ThoughtsPrayers(): JSX.Element {
                             className="p-3 border border-gray-300 rounded-lg w-full"
                         />
 
-                        <button
-                            type="submit"
-                            disabled={submitting}
-                            className="bg-[var(--clr-celadon)] text-white py-3 rounded-lg font-semibold hover:opacity-90 transition"
-                        >
-                            {submitting ? "Submitting..." : "Submit"}
-                        </button>
+                        <Cbtn text={submitting ? "Submitting..." : "Submit"} type="submit"/>
                     </form>
                 </div>
 
