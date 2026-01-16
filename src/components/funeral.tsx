@@ -48,13 +48,15 @@ export default function Funeral(): JSX.Element {
 
     if (!funeral) {
         return (
-            <section className="dark:text-white dark:bg-black/[0.98] bg-[var(--clr-white)] w-full flex justify-center">
+            <section className="dark:text-white dark:bg-black/[0.98] bg-[var(--clr-white)] w-full flex justify-center px-5">
                 <div className="py-20 max-w-7xl w-full border-t dark:border-slate-800 border-[var(--clr-celadon)] text-center">
                     <h2 className="text-3xl 2xl:text-4xl font-domine mb-5 text-center">
                         Funeral Details
                     </h2>
-                    <p>Funeral arrangements to be announced soon.</p>
-                    <p>Livestream links will be provided and can be watched on here.</p>
+                    <p className="text-lg 2xl:text-lg">Livestream links will be provided and can be watched on here.</p>
+                    <div className="w-full mt-10">
+                        <img src="/invite.jpeg" alt="invite" className="max-w-xl w-full mx-auto" />
+                    </div>
                 </div>
             </section>
         );
