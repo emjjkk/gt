@@ -329,6 +329,7 @@ export default function Gallery(): JSX.Element {
                                         value={contributedBy}
                                         onChange={(e) => setContributedBy(e.target.value)}
                                         placeholder="Your name"
+                                        required
                                         className="p-3 border border-gray-300 dark:border-neutral-700 rounded-lg w-full"
                                     />
 
