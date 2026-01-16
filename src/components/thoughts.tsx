@@ -90,13 +90,13 @@ export default function ThoughtsPrayers(): JSX.Element {
                 >
                     <form
                         onSubmit={handleSubmit}
-                        className="bg-white dark:bg-neutral-950 p-5 rounded-sm flex flex-col gap-4 mb-12"
+                        className="bg-white dark:bg-neutral-950 p-6 rounded-lg w-full mx-auto border border-neutral-300 dark:border-neutral-700 mb-7"
                     >
                         <textarea
                             value={message}
                             onChange={(e) => setMessage(e.target.value)}
                             placeholder="Write your thought or prayer here..."
-                            className="p-4 border border-gray-300 rounded-lg w-full resize-none h-28"
+                            className="p-4 border border-gray-300 dark:border-neutral-700 rounded-lg w-full resize-none h-28"
                             required
                         />
 
@@ -105,7 +105,7 @@ export default function ThoughtsPrayers(): JSX.Element {
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             placeholder="Your name"
-                            className="p-3 border border-gray-300 rounded-lg w-full"
+                            className="p-3 border border-gray-300 dark:border-neutral-700 rounded-lg w-full mb-2"
                         />
 
                         <Cbtn text={submitting ? "Submitting..." : "Submit"} type="submit"/>
