@@ -108,7 +108,7 @@ export default function ThoughtsPrayers(): JSX.Element {
                             className="p-3 border border-gray-300 dark:border-neutral-700 rounded-lg w-full mb-2"
                         />
 
-                        <Cbtn text={submitting ? "Submitting..." : "Submit"} type="submit"/>
+                        <Cbtn text={submitting ? "Submitting..." : "Submit"} type="submit" />
                     </form>
                 </div>
 
@@ -132,7 +132,14 @@ export default function ThoughtsPrayers(): JSX.Element {
                                     key={entry.id}
                                     className="break-inside-avoid p-6 border border-gray-200 dark:border-neutral-800 rounded-lg bg-gray-50 dark:bg-neutral-950 shadow-sm mb-5"
                                 >
-                                    <p className="text-gray-800 dark:text-white">{entry.message}</p>
+                                    <p className="text-gray-800 dark:text-white">
+                                        {entry.message.split("\n").map((line, idx) => (
+                                            <React.Fragment key={idx}>
+                                                <p className="mb-2">{line}</p>
+                                            </React.Fragment>
+                                        ))}
+                                    </p>
+
                                     <p className="text-sm text-gray-500 dark:text-white/90 mt-2">
                                         {entry.name ? `— ${entry.name}, ` : ""}
                                         {new Date(entry.created_at).toLocaleDateString()}

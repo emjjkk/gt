@@ -68,11 +68,15 @@ export default function About(): JSX.Element {
   return (
     <section id="about" className="flex justify-center dark:text-white dark:bg-black/[0.98] bg-[var(--clr-white)] bg-opacity-50 px-6">
       <div className="min-h-[50vh] w-full max-w-6xl 2xl:max-w-7xl py-20 border-t dark:border-slate-800 border-[var(--clr-celadon)] md:flex justify-between gap-10">
-        <div className="md:w-1/2 animate__animated animate__fadeInLeft">
+        <div className="animate__animated animate__fadeInLeft">
           <h1 className="text-3xl 2xl:text-4xl font-domine mb-10">
             The Story of a Life Well Lived
           </h1>
-
+          <img
+            src="/images/1.jpeg"
+            alt="Granddad"
+            className="h-[650px] 2xl:h-[700px] w-full md:w-1/2 object-cover float-left mr-6 mb-4 grayscale-0 hover:grayscale-50 hover:scale-[1.01] hover:shadow-lg/75 animate__animated animate__fadeInLeft"
+          />
           {loading && (
             <p className="text-sm text-slate-500/50">
               <i className="fa-solid fa-spinner animate-spin"></i>
@@ -83,7 +87,7 @@ export default function About(): JSX.Element {
             <>
               {!isEditing ? (
                 <>
-                  <p className="dark:text-white/90 text-black/70 text-md 2x:text-lg leading-relaxed whitespace-pre-line">
+                  <p className="dark:text-white/90 text-black/70 text-md 2x:text-lg leading-normal whitespace-pre-line">
                     {about.text}
                   </p>
 
@@ -97,7 +101,7 @@ export default function About(): JSX.Element {
                       onClick={() => setIsEditing(true)}
                       className="text-blue-500 text-sm flex items-center gap-1 hover:underline"
                     >
-                     { /*<i className="fa-solid fa-pencil"></i> Suggest an edit*/}
+                      { /*<i className="fa-solid fa-pencil"></i> Suggest an edit*/}
                     </button>
                   </div>
                 </>
@@ -140,12 +144,6 @@ export default function About(): JSX.Element {
             </>
           )}
         </div>
-
-        <img
-          src="/images/1.jpeg"
-          alt="Granddad"
-          className="h-[650px] 2xl:h-[700px] md:w-1/2 object-cover mt-5 md:mt-0 grayscale-0 hover:grayscale-50 hover:scale-[1.01] hover:shadow-lg/75 animate__animated animate__fadeInRight"
-        />
       </div>
     </section>
   );

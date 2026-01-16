@@ -54,6 +54,7 @@ export default function Funeral(): JSX.Element {
                         Funeral Details
                     </h2>
                     <p>Funeral arrangements to be announced soon.</p>
+                    <p>Livestream links will be provided and can be watched on here.</p>
                 </div>
             </section>
         );

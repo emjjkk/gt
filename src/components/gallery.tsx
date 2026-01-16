@@ -542,7 +542,7 @@ export default function Gallery(): JSX.Element {
                 </div>
 
                 {/* Masonry Gallery */}
-                <div className="columns-1 sm:columns-2 lg:columns-4 gap-4 max-w-7xl mx-auto">
+                <div className="columns-1 sm:columns-2 lg:columns-6 gap-4 max-w-7xl mx-auto">
                     {(showAll ? items : items.slice(0, 9)).map((item) => (
                         <div
                             key={item.id}
@@ -556,6 +556,7 @@ export default function Gallery(): JSX.Element {
                                             src={getYoutubeThumbnail(item.image_url)}
                                             alt={item.title}
                                             className="w-full rounded-lg hover:opacity-90 transition"
+                                            oncontextmenu="return false;"
                                         />
                                     ) : (
                                         <video
@@ -628,7 +629,7 @@ export default function Gallery(): JSX.Element {
                             />
                         )}
 
-                        <div className="hidden md:block absolute top-5 left-5 max-w-lg">
+                        <div className="hidden md:block absolute top-5 left-5 max-w-md">
                             <h3 className="text-2xl font-semibold mb-2 text-white">{activeItem.title}</h3>
 
                             {activeItem.caption && (
