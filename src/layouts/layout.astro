@@ -1,5 +1,6 @@
 ---
 import "../styles/globals.css";
+import Chatbot from '../components/chatbot'
 ---
 
 <html lang="en">
@@ -20,7 +21,8 @@ import "../styles/globals.css";
         <!-- Animations -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     </head>
-	<body class="hs">
+	<body class="hs relative">
+        <Chatbot client:load/>
 		<main><slot /></main>
          <script>
             const header = document.getElementById("site-header");
