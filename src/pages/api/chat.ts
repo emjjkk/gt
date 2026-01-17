@@ -1,11 +1,19 @@
 export const prerender = false;
 
 import type { APIRoute } from "astro";
-import fs from "fs";
-import path from "path";
 
-const KNOWLEDGE_PATH = path.resolve("src/data/knowledge.txt");
-const RAW_TEXT = fs.readFileSync(KNOWLEDGE_PATH, "utf8");
+// Store the text in memory after first load
+let CACHED_TEXT: string | null = null;
+
+async function getKnowledgeText() {
+  if (CACHED_TEXT) return CACHED_TEXT;
+  
+  // In production, fetch from public folder
+  const url = new URL('https://www.oladosuandoluremimemorial.com/knowledge.txt');
+  const response = await fetch(url);
+  CACHED_TEXT = await response.text();
+  return CACHED_TEXT;
+}
 
 function getRelevantChunks(text: string, query: string) {
   if (!query) return [];
@@ -22,7 +30,6 @@ function getRelevantChunks(text: string, query: string) {
 export const POST: APIRoute = async ({ request }) => {
   let data: any;
 
-  // 1️⃣ Safely parse JSON
   try {
     data = await request.json();
   } catch (err) {
@@ -39,6 +46,7 @@ export const POST: APIRoute = async ({ request }) => {
     });
   }
 
+  const RAW_TEXT = await getKnowledgeText();
   const chunks = getRelevantChunks(RAW_TEXT, message);
 
   const prompt = `
@@ -50,9 +58,9 @@ INFORMATION:
 ${chunks.join("\n\n")}
 `;
 
-  console.log(prompt)
+  console.log("Prompt length:", prompt.length);
+  console.log("Chunks found:", chunks.length);
 
-  // 2️⃣ Call OpenRouter safely
   try {
     const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
@@ -79,13 +87,11 @@ ${chunks.join("\n\n")}
       );
     }
 
-    // Debug: if no choices or unexpected structure
     if (!result.choices || !result.choices[0]?.message?.content) {
       console.error("OpenRouter response:", result);
       return new Response(
         JSON.stringify({
-          reply:
-            "OpenRouter did not return a valid response. See server logs."
+          reply: "OpenRouter did not return a valid response. See server logs."
         }),
         { status: 500 }
       );
