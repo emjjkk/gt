@@ -75,7 +75,7 @@ export default function FloatingChatbot() {
 
           {/* Messages */}
           <div className="flex-1 p-3 overflow-y-auto space-y-2">
-            <p className="text-sm">Curious about the life and legacy of Pa Michael Alabi? Ask away to get answers. Powered by Deepseek AI.</p>
+            <p className="text-sm">Curious about the life and legacy of Pa Michael Alabi? Ask away to get answers. Powered by Xiaomi MiMo AI.</p>
             {messages.map((m, i) => (
               <div
                 key={i}

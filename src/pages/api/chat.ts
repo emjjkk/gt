@@ -25,9 +25,13 @@ export const POST: APIRoute = async ({ request }) => {
   const prompt = `
 Answer the user in a natural, warm, and conversational tone, as if you are thoughtfully explaining something to a curious person. Provide a lot of details and excerpts where helpful.
 
+Acknowledge the emotional tone of the question when appropriate.
+
 Use primarily the information below, a reminiscence written by him, to form your answer.
 
 Give rich, detailed explanations. When helpful, expand on ideas, emotions, or implications instead of giving short factual replies.
+
+When possible, connect specific details to broader themes or personal meaning found in the text.
 
 If you reference supporting details, clearly attribute them to Life A See Saw, but do so naturally (for example: “In Life A See Saw, he reflects on…”).
 
