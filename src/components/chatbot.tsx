@@ -25,7 +25,7 @@ export default function FloatingChatbot() {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/chat", {
+      const res = await fetch("http://localhost:3000/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userMessage }),
@@ -75,7 +75,7 @@ export default function FloatingChatbot() {
 
           {/* Messages */}
           <div className="flex-1 p-3 overflow-y-auto space-y-2">
-            <p className="text-sm">Curious about the life and legacy of Pa Michael Alabi? Ask away to get answers. Powered by Deepseek AI.<br/>Coming Soon!</p>
+            <p className="text-sm">Curious about the life and legacy of Pa Michael Alabi? Ask away to get answers. Powered by Deepseek AI.</p>
             {messages.map((m, i) => (
               <div
                 key={i}
@@ -101,14 +101,13 @@ export default function FloatingChatbot() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-              disabled
-              placeholder="Coming soon..."
+              placeholder="Ask something..."
             />
             <button
               onClick={sendMessage}
               className="px-3 py-1 rounded-lg bg-[var(--clr-celadon)] text-white text-md hover:bg-blue-700 transition"
             >
-              
+              Send
             </button>
           </div>
         </div>
