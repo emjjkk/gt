@@ -3,57 +3,85 @@ import express from "express";
 import fs from "fs";
 import path from "path";
 import cors from "cors";
+import readline from "readline";
 
 // ------------------ Setup ------------------
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
-
-// ------------------ Keep-Alive Endpoint ------------------
-app.get("/ping", (req, res) => {
-  res.json({ status: "alive", timestamp: new Date().toISOString() });
-});
-
-
 // ------------------ Knowledge ------------------
 const KNOWLEDGE_PATH = path.resolve("src/data/knowledge.txt");
-const RAW_TEXT = fs.readFileSync(KNOWLEDGE_PATH, "utf8");
 
-function getRelevantChunks(text: string, query: string): string[] {
+// Lazy-load and chunk the book at startup
+const CHUNK_SIZE = 2000; // 2000 chars per chunk
+let knowledgeChunks: string[] = [];
+
+async function loadKnowledge() {
+  console.log("Loading book...");
+  const fileStream = fs.createReadStream(KNOWLEDGE_PATH, { encoding: "utf8" });
+  const rl = readline.createInterface({ input: fileStream, crlfDelay: Infinity });
+
+  let buffer = "";
+  for await (const line of rl) {
+    buffer += line + "\n";
+    if (buffer.length >= CHUNK_SIZE) {
+      knowledgeChunks.push(buffer);
+      buffer = "";
+    }
+  }
+  if (buffer.length > 0) knowledgeChunks.push(buffer);
+
+  console.log(`Book loaded with ${knowledgeChunks.length} chunks.`);
+}
+
+// Call it immediately
+loadKnowledge().catch(err => {
+  console.error("Failed to load book:", err);
+  process.exit(1);
+});
+
+// ------------------ Helpers ------------------
+function getRelevantChunks(query: string, maxChunks = 5): string[] {
   if (!query) return [];
 
   const words = query.toLowerCase().split(/\s+/);
 
-  return text
-    .split("\n\n")
-    .filter(chunk =>
-      words.some(word => chunk.toLowerCase().includes(word))
-    )
-    .slice(0, 3);
+  // Filter chunks containing at least one query word
+  const filtered = knowledgeChunks.filter(chunk =>
+    words.some(word => chunk.toLowerCase().includes(word))
+  );
+
+  return filtered.slice(0, maxChunks);
 }
 
 // ------------------ Chat Endpoint ------------------
-
 app.post("/chat", async (req, res) => {
   const { message } = req.body;
-  console.log("OPENROUTER_API_KEY:", process.env.OPENROUTER_API_KEY);
 
   if (!message || typeof message !== "string") {
     return res.status(400).json({ error: "No message provided" });
   }
 
-  const chunks = getRelevantChunks(RAW_TEXT, message);
-
+  const chunks = getRelevantChunks(message, 5);
   const prompt = `
-Use ONLY the information below to answer the question. Be descriptive and give comprehensive answers
-If the answer is not present, say you don't know. 
+Use ONLY the information below to answer the question.
+If the answer is not present, say you don't know.
 
 INFORMATION:
 ${chunks.join("\n\n")}
 `;
+
+  // Prepare payload for OpenRouter
+  const payload = {
+    model: "google/gemini-1.5-flash", // Free reliable model
+    messages: [
+      { role: "system", content: prompt },
+      { role: "user", content: message }
+    ]
+  };
 
   try {
     const response = await fetch(
@@ -64,41 +92,41 @@ ${chunks.join("\n\n")}
           Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-          model: "arcee-ai/trinity-mini:free",
-          messages: [
-            { role: "system", content: prompt },
-            { role: "user", content: message }
-          ]
-        })
+        body: JSON.stringify(payload)
       }
     );
 
-    let result: any;
-    try {
-      result = await response.json();
-    } catch {
-      return res
-        .status(500)
-        .json({ error: "OpenRouter returned invalid JSON" });
-    }
+    const result = await response.json();
 
-    if (!result.choices || !result.choices[0]?.message?.content) {
-      console.error("OpenRouter response:", result);
-      return res.status(500).json({
-        reply: "OpenRouter did not return a valid response. See server logs."
+    if (result?.error) {
+      console.error("OpenRouter error:", result.error);
+      return res.status(503).json({
+        reply: "The AI is temporarily unavailable. Please try again."
       });
     }
 
-    return res.status(200).json({
-      reply: result.choices[0].message.content
-    });
+    const reply = result.choices?.[0]?.message?.content;
+    if (!reply) {
+      console.error("OpenRouter returned invalid response:", result);
+      return res.status(500).json({
+        reply: "AI returned invalid response. See server logs."
+      });
+    }
+
+    res.status(200).json({ reply });
   } catch (err) {
     console.error("OpenRouter request failed:", err);
-    return res
-      .status(500)
-      .json({ reply: "Failed to fetch from OpenRouter" });
+    res.status(500).json({ reply: "Failed to fetch from OpenRouter" });
   }
+});
+
+// ------------------ Keep-Alive Endpoint ------------------
+app.get("/ping", (req, res) => {
+  // Optional simple auth
+  if (process.env.PING_KEY && req.query.key !== process.env.PING_KEY) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+  res.json({ status: "alive", timestamp: new Date().toISOString() });
 });
 
 // ------------------ Start Server ------------------
