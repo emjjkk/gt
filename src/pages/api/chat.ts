@@ -25,7 +25,8 @@ export const POST: APIRoute = async ({ request }) => {
   const prompt = `
 Use ONLY the information below to answer the question. Give answers as detailed as possible. 
 The user does not know what source you are using, so if you tell supporting evidence, specify it's from "Life A See Saw" a reminiscence written by him.
-If the answer is not present, say you don't know.
+If the specific answer is not present, make inferences based on the text, but make it clear how you came to that conclusion.
+If the question is not related to the topic, answer shortly and politely
 
 INFORMATION:
 ${KNOWLEDGE_TEXT}
