@@ -4,9 +4,6 @@ import fs from "fs";
 import path from "path";
 import cors from "cors";
 
-
-
-
 // ------------------ Setup ------------------
 const app = express();
 app.use(express.json());
@@ -14,6 +11,12 @@ app.use(express.json());
 const PORT = process.env.PORT || 3000;
 
 app.use(cors());
+
+// ------------------ Keep-Alive Endpoint ------------------
+app.get("/ping", (req, res) => {
+  res.json({ status: "alive", timestamp: new Date().toISOString() });
+});
+
 
 // ------------------ Knowledge ------------------
 const KNOWLEDGE_PATH = path.resolve("src/data/knowledge.txt");
