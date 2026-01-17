@@ -42,12 +42,15 @@ export const POST: APIRoute = async ({ request }) => {
   const chunks = getRelevantChunks(RAW_TEXT, message);
 
   const prompt = `
-Use ONLY the information below to answer the question.
+Use ONLY the information below to answer the question. Give answers as detailed as possible. 
+The user does not know what source you are using, so if you tell supporting evidence, specify it's from "Life A See Saw" a reminiscence written by him
 If the answer is not present, say you don't know.
 
 INFORMATION:
 ${chunks.join("\n\n")}
 `;
+
+  console.log(prompt)
 
   // 2️⃣ Call OpenRouter safely
   try {
@@ -58,7 +61,7 @@ ${chunks.join("\n\n")}
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "deepseek/deepseek-r1-0528:free",
+        model: "xiaomi/mimo-v2-flash:free",
         messages: [
           { role: "system", content: prompt },
           { role: "user", content: message }
