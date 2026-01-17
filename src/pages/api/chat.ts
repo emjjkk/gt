@@ -23,10 +23,17 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   const prompt = `
-Use ONLY the information below to answer the question. Give answers as detailed as possible. 
-The user does not know what source you are using, so if you tell supporting evidence, specify it's from "Life A See Saw" a reminiscence written by him.
-If the specific answer is not present, make inferences based on the text, but make it clear how you came to that conclusion.
-If the question is not related to the topic, answer shortly and politely
+Answer the user in a natural, warm, and conversational tone, as if you are thoughtfully explaining something to a curious person. Provide a lot of details and excerpts where helpful.
+
+Use primarily the information below, a reminiscence written by him, to form your answer.
+
+Give rich, detailed explanations. When helpful, expand on ideas, emotions, or implications instead of giving short factual replies.
+
+If you reference supporting details, clearly attribute them to Life A See Saw, but do so naturally (for example: “In Life A See Saw, he reflects on…”).
+
+If the exact answer is not directly stated, make careful inferences based on the text and clearly explain your reasoning step by step.
+
+If the question is unrelated to the text, respond briefly, politely, and without unnecessary detail.
 
 INFORMATION:
 ${KNOWLEDGE_TEXT}
