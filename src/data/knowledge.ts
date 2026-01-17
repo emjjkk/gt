@@ -1,4 +1,4 @@
-**Cover/Title Page:**
+export const KNOWLEDGE_TEXT = `**Cover/Title Page:**
 “Life is like a see-saw.
 We all share in its ups and downs.
 But a little bit of smile,
@@ -360,3 +360,4 @@ I will be seventy in January year 2003. I have had a fulfilled life, rose from g
 I hope anyone who reads this book will borrow a leaf from all my experiences, and find solace in the knowledge of the true existence of the Almighty God.
 
 Thirteen years after our arrival in Ibadan, God gave us the means to build our own property, which was ready just in time for the conjugal marriage of our first daughter. To God be the glory, as He granted my prayer request that “whenever any of my children were to be married, I would want it to be in our own home and not in a rented property”.
+` // ... paste the ENTIRE content here

@@ -1,31 +1,7 @@
 export const prerender = false;
 
 import type { APIRoute } from "astro";
-
-// Store the text in memory after first load
-let CACHED_TEXT: string | null = null;
-
-async function getKnowledgeText() {
-  if (CACHED_TEXT) return CACHED_TEXT;
-  
-  // In production, fetch from public folder
-  const url = new URL('https://www.oladosuandoluremimemorial.com/knowledge.txt');
-  const response = await fetch(url);
-  CACHED_TEXT = await response.text();
-  return CACHED_TEXT;
-}
-
-function getRelevantChunks(text: string, query: string) {
-  if (!query) return [];
-  const words = query.toLowerCase().split(/\s+/);
-
-  return text
-    .split("\n\n")
-    .filter(chunk =>
-      words.some(word => chunk.toLowerCase().includes(word))
-    )
-    .slice(0, 3);
-}
+import { KNOWLEDGE_TEXT } from "../../data/knowledge";
 
 export const POST: APIRoute = async ({ request }) => {
   let data: any;
@@ -46,20 +22,16 @@ export const POST: APIRoute = async ({ request }) => {
     });
   }
 
-  const RAW_TEXT = await getKnowledgeText();
-  const chunks = getRelevantChunks(RAW_TEXT, message);
-
   const prompt = `
 Use ONLY the information below to answer the question. Give answers as detailed as possible. 
-The user does not know what source you are using, so if you tell supporting evidence, specify it's from "Life A See Saw" a reminiscence written by him
+The user does not know what source you are using, so if you tell supporting evidence, specify it's from "Life A See Saw" a reminiscence written by him.
 If the answer is not present, say you don't know.
 
 INFORMATION:
-${chunks.join("\n\n")}
+${KNOWLEDGE_TEXT}
 `;
-
-  console.log("Prompt length:", prompt.length);
-  console.log("Chunks found:", chunks.length);
+  console.log(prompt)
+  console.log("Prompt character count:", prompt.length);
 
   try {
     const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
