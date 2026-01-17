@@ -12,6 +12,6 @@ jobs:
     steps:
       - name: Ping Render Server
         run: |
-          URL=${{ secrets.RENDER_APP_URL }}
+          URL=https://gt-jhms.onrender.com
           echo "Pinging $URL"
           curl -X GET $URL/ping || echo "Ping failed"
