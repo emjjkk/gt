@@ -544,7 +544,7 @@ export default function Gallery(): JSX.Element {
 
                 {/* Masonry Gallery */}
                 <div className="columns-1 sm:columns-2 lg:columns-6 gap-4 max-w-7xl mx-auto">
-                    {(showAll ? items : items.slice(0, 9)).map((item) => (
+                    {(showAll ? items : items.slice(0, 17)).map((item) => (
                         <div
                             key={item.id}
                             className="mb-6 break-inside-avoid cursor-pointer relative group"
