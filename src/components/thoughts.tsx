@@ -269,11 +269,11 @@ export default function ThoughtsPrayers(): JSX.Element {
                         if (e.target === e.currentTarget) closeModal();
                     }}
                 >
-                    <div className="bg-white dark:bg-neutral-950 rounded-xl max-w-2xl w-full max-h-[80vh] overflow-hidden shadow-2xl">
+                    <div className="bg-white dark:bg-neutral-950 rounded-xl max-w-3xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
                         {/* Modal Header */}
-                        <div className="flex justify-between items-center p-6 border-b dark:border-neutral-800">
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                                Full Message
+                        <div className="flex justify-between items-center p-6 border-b border-neutral-200 dark:border-neutral-800">
+                            <h3 className="text-md text-gray-900 dark:text-white">
+                                {selectedEntry.name ? `${selectedEntry.name}` : "Anonymous"}
                             </h3>
                             <button
                                 onClick={closeModal}
@@ -285,36 +285,11 @@ export default function ThoughtsPrayers(): JSX.Element {
                         </div>
 
                         {/* Modal Body */}
-                        <div className="p-6 overflow-y-auto max-h-[60vh]">
+                        <div className="p-6 overflow-y-auto max-h-[80vh]">
                             <div className="text-gray-800 dark:text-white whitespace-pre-line">
                                 {selectedEntry.message.split("\n").map((line, idx) => (
                                     <p key={idx} className="mb-3">{line}</p>
                                 ))}
-                            </div>
-                        </div>
-
-                        {/* Modal Footer */}
-                        <div className="p-6 border-t dark:border-neutral-800 bg-gray-50 dark:bg-neutral-900">
-                            <div className="text-sm text-gray-500 dark:text-gray-400">
-                                <p>
-                                    {selectedEntry.name ? `Submitted by: ${selectedEntry.name}` : "Anonymous"}
-                                </p>
-                                <p className="mt-1">
-                                    Date: {new Date(selectedEntry.created_at).toLocaleDateString('en-US', {
-                                        weekday: 'long',
-                                        year: 'numeric',
-                                        month: 'long',
-                                        day: 'numeric'
-                                    })}
-                                </p>
-                            </div>
-                            <div className="mt-4 flex justify-end">
-                                <button
-                                    onClick={closeModal}
-                                    className="bg-[var(--clr-celadon)] text-white py-2 px-6 rounded-lg font-medium hover:opacity-90 transition"
-                                >
-                                    Close
-                                </button>
                             </div>
                         </div>
                     </div>
