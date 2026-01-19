@@ -60,7 +60,7 @@ export default function Funeral(): JSX.Element {
                         Funeral Details
                     </h2>
                     <p className="text-center text-xl font-bold mb-10">
-                                Livestream links will be provided and can be watched here.
+                                Livestream will be provided and can be watched here.
                             </p>
 
                     <div className="md:flex items-center gap-10">
@@ -182,6 +182,7 @@ export default function Funeral(): JSX.Element {
         </section>
     );
 }
+
 
 
 
