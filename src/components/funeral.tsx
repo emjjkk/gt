@@ -59,7 +59,7 @@ export default function Funeral(): JSX.Element {
                     <h2 className="text-3xl font-domine mb-5 text-center">
                         Funeral Details
                     </h2>
-                    <p className="text-center text-md mb-10">
+                    <p className="text-center text-xl font-bold mb-10">
                                 Livestream links will be provided and can be watched here.
                             </p>
 
@@ -182,6 +182,7 @@ export default function Funeral(): JSX.Element {
         </section>
     );
 }
+
 
 
 
