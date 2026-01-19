@@ -85,22 +85,22 @@ export default function Funeral(): JSX.Element {
                                 <i className="fa-solid fa-dove"></i> Service of Songs
                             </p>
                             <p>
-                                Thursday, February 19th 2026 · 5:30PM – 7:30PM
+                                TIme: Thursday, February 19th 2026 · 5:30PM – 7:30PM
                             </p>
                             <p className="mb-3">
-                                St. Williams Church, Walderslade, Chatham, UK
+                                Venue: St. Williams Church, Walderslade, Chatham, UK
                             </p>
 
                             <p className="font-semibold">
                                 <i className="fa-solid fa-cross"></i> Funeral Service
                             </p>
-                            <p>Friday, February 20th 2026 · 10:00AM</p>
+                            <p>TIme: Friday, February 20th 2026 · 10:00AM</p>
                             <p className="mb-3">
-                                St. Williams Church, Walderslade, Chatham, UK
+                                Venue: St. Williams Church, Walderslade, Chatham, UK
                             </p>
 
                             <p className="font-semibold mb-3">
-                                <i className="fa-solid fa-lock"></i> Interment (Private)
+                                <i className="fa-solid fa-lock"></i> Interment To Follow Directly (Private)
                             </p>
 
                             <p className="font-semibold">
@@ -108,7 +108,7 @@ export default function Funeral(): JSX.Element {
                             </p>
                             <p>Time: To Be Announced</p>
                             <p>
-                                St. Justus Church Hall, Rochester, UK
+                                Venue: St. Justus Church Hall, Rochester, UK
                             </p>
                         </div>
                     </div>
