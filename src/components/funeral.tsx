@@ -77,11 +77,11 @@ export default function Funeral(): JSX.Element {
                                 Livestream links will be provided and can be watched here.
                             </p>
 
-                            <p className="font-bold text-xl mb-3">
+                            <p className="font-bold text-xl mb-3 text-blue-500">
                                 Schedule & Arrangements
                             </p>
 
-                            <p className="font-semibold">
+                            <p className="font-semibold text-blue-500">
                                 <i className="fa-solid fa-dove"></i> Service of Songs
                             </p>
                             <p>
@@ -91,7 +91,7 @@ export default function Funeral(): JSX.Element {
                                 Venue: St. Williams Church, Walderslade, Chatham, UK
                             </p>
 
-                            <p className="font-semibold">
+                            <p className="font-semibold text-blue-500">
                                 <i className="fa-solid fa-cross"></i> Funeral Service
                             </p>
                             <p>TIme: Friday, February 20th 2026 · 10:00AM</p>
@@ -99,11 +99,11 @@ export default function Funeral(): JSX.Element {
                                 Venue: St. Williams Church, Walderslade, Chatham, UK
                             </p>
 
-                            <p className="font-semibold mb-3">
+                            <p className="font-semibold mb-3 text-blue-500">
                                 <i className="fa-solid fa-lock"></i> Interment To Follow Directly (Private event)
                             </p>
 
-                            <p className="font-semibold">
+                            <p className="font-semibold text-blue-500">
                                 <i className="fa-solid fa-wine-glass"></i> Reception
                             </p>
                             <p>Time: To Be Announced</p>
