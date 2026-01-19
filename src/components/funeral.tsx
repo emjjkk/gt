@@ -100,7 +100,7 @@ export default function Funeral(): JSX.Element {
                             </p>
 
                             <p className="font-semibold mb-3">
-                                <i className="fa-solid fa-lock"></i> Interment To Follow Directly (Private)
+                                <i className="fa-solid fa-lock"></i> Interment To Follow Directly (Private event)
                             </p>
 
                             <p className="font-semibold">
