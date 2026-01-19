@@ -12,6 +12,7 @@ type Funeral = {
 export default function Funeral(): JSX.Element {
     const [funeral, setFuneral] = useState<Funeral | null>(null);
     const [loading, setLoading] = useState(true);
+    const [isImageOpen, setIsImageOpen] = useState(false);
 
     useEffect(() => {
         const fetchFuneral = async () => {
@@ -27,6 +28,7 @@ export default function Funeral(): JSX.Element {
             } else {
                 setFuneral(data);
             }
+
             setLoading(false);
         };
 
@@ -35,11 +37,12 @@ export default function Funeral(): JSX.Element {
 
     if (loading) {
         return (
-            <section id="funeral" className="dark:text-white dark:bg-black/[0.98] bg-[var(--clr-white)] w-full flex justify-center">
-                <div className="py-20 max-w-6xl 2xl:max-w-7xl w-full border-t dark:border-slate-800 border-[var(--clr-celadon)] text-center">
-                    <h2 className="text-3xl 2xl:text-4xl font-domine mb-5 text-center">
-                        Funeral Details
-                    </h2>
+            <section
+                id="funeral"
+                className="dark:text-white dark:bg-black/[0.98] bg-[var(--clr-white)] w-full flex justify-center"
+            >
+                <div className="py-20 max-w-6xl w-full border-t dark:border-slate-800 border-[var(--clr-celadon)] text-center">
+                    <h2 className="text-3xl font-domine mb-5">Funeral Details</h2>
                     <p>Loading funeral details...</p>
                 </div>
             </section>
@@ -48,16 +51,94 @@ export default function Funeral(): JSX.Element {
 
     if (!funeral) {
         return (
-            <section className="dark:text-white dark:bg-black/[0.98] bg-[var(--clr-white)] w-full flex justify-center px-5">
-                <div className="py-20 max-w-7xl w-full border-t dark:border-slate-800 border-[var(--clr-celadon)] text-center">
-                    <h2 className="text-3xl 2xl:text-4xl font-domine mb-5 text-center">
+            <section
+                id="funeral"
+                className="dark:text-white dark:bg-black/[0.98] bg-[var(--clr-white)] w-full flex justify-center px-5 md:px-0"
+            >
+                <div className="py-20 max-w-6xl w-full border-t dark:border-slate-800 border-[var(--clr-celadon)]">
+                    <h2 className="text-3xl font-domine mb-10 text-center">
                         Funeral Details
                     </h2>
-                    <p className="text-lg 2xl:text-lg">Livestream links will be provided and can be watched on here.</p>
-                    <div className="w-full mt-10">
-                        <img src="/invite.jpeg" alt="invite" className="max-w-xl w-full mx-auto" />
+
+                    <div className="md:flex items-center gap-10">
+                        {/* Image */}
+                        <div className="md:w-1/2">
+                            <img
+                                src="/invite.jpeg"
+                                alt="invite"
+                                onClick={() => setIsImageOpen(true)}
+                                className="cursor-zoom-in max-w-xl w-full mx-auto rounded-lg shadow-lg hover:opacity-90 transition"
+                            />
+                        </div>
+
+                        {/* Details */}
+                        <div className="md:w-1/2 text-left">
+                            <p className="text-md mb-3 mt-4 md:mt-0">
+                                Livestream links will be provided and can be watched here.
+                            </p>
+
+                            <p className="font-bold text-xl mb-3">
+                                Schedule & Arrangements
+                            </p>
+
+                            <p className="font-semibold">
+                                <i className="fa-solid fa-dove"></i> Service of Songs
+                            </p>
+                            <p>
+                                Thursday, February 19th 2026 · 5:30PM – 7:30PM
+                            </p>
+                            <p className="mb-3">
+                                St. Williams Church, Walderslade, Chatham, UK
+                            </p>
+
+                            <p className="font-semibold">
+                                <i className="fa-solid fa-cross"></i> Funeral Service
+                            </p>
+                            <p>Friday, February 20th 2026 · 10:00AM</p>
+                            <p className="mb-3">
+                                St. Williams Church, Walderslade, Chatham, UK
+                            </p>
+
+                            <p className="font-semibold mb-3">
+                                <i className="fa-solid fa-lock"></i> Interment (Private)
+                            </p>
+
+                            <p className="font-semibold">
+                                <i className="fa-solid fa-wine-glass"></i> Reception
+                            </p>
+                            <p>Time: To Be Announced</p>
+                            <p>
+                                St. Justus Church Hall, Rochester, UK
+                            </p>
+                        </div>
                     </div>
                 </div>
+
+                {/* Image Modal */}
+                {isImageOpen && (
+                    <div
+                        className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center px-4"
+                        onClick={() => setIsImageOpen(false)}
+                    >
+                        <div
+                            className="relative max-w-5xl w-full"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <button
+                                className="absolute -top-12 right-0 text-white text-4xl font-bold"
+                                onClick={() => setIsImageOpen(false)}
+                            >
+                                ×
+                            </button>
+
+                            <img
+                                src="/invite.jpeg"
+                                alt="invite enlarged"
+                                className="w-full rounded-lg shadow-2xl"
+                            />
+                        </div>
+                    </div>
+                )}
             </section>
         );
     }
@@ -65,16 +146,16 @@ export default function Funeral(): JSX.Element {
     return (
         <section className="dark:text-white dark:bg-black/[0.98] py-20 bg-[var(--clr-white)] border-t dark:border-slate-800 border-[var(--clr-celadon)]">
             <div className="max-w-3xl mx-auto px-6 text-center">
-                <h2 className="text-3xl 2xl:text-4xl font-domine mb-10">Funeral Details</h2>
+                <h2 className="text-3xl font-domine mb-10">Funeral Details</h2>
 
                 {funeral.status === "pending" && (
-                    <p className="text-gray-700 text-lg">
-                        Funeral date and venue are not confirmed yet. Details coming soon.
+                    <p className="text-lg">
+                        Funeral date and venue are not confirmed yet.
                     </p>
                 )}
 
                 {funeral.status === "scheduled" && funeral.date && funeral.venue && (
-                    <div className="text-gray-800 text-lg space-y-2">
+                    <div className="space-y-2 text-lg">
                         <p>
                             <strong>Date & Time:</strong>{" "}
                             {new Date(funeral.date).toLocaleString()}
@@ -86,10 +167,8 @@ export default function Funeral(): JSX.Element {
                 )}
 
                 {funeral.status === "live" && funeral.livestream_url && (
-                    <div className="text-gray-800 text-lg space-y-2">
-                        <p>
-                            The funeral is currently live. Watch it here:
-                        </p>
+                    <div className="space-y-3 text-lg">
+                        <p>The funeral is currently live.</p>
                         <a
                             href={funeral.livestream_url}
                             target="_blank"
