@@ -108,7 +108,7 @@ export default function Funeral(): JSX.Element {
                             </p>
                             <p>Time: Immediately after service</p>
                             <p>
-                                Venue: St. Justus Church Hall, Rochester, UK
+                                Venue: St. Justus Church Hall, The Fairway, Rochester, UK
                             </p>
                         </div>
                     </div>
@@ -183,4 +183,5 @@ export default function Funeral(): JSX.Element {
         </section>
     );
 }
+
 
