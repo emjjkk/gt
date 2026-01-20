@@ -56,9 +56,12 @@ export default function Funeral(): JSX.Element {
                 className="dark:text-white dark:bg-black/[0.98] bg-[var(--clr-white)] w-full flex justify-center px-5 md:px-0"
             >
                 <div className="py-20 max-w-6xl w-full border-t dark:border-slate-800 border-[var(--clr-celadon)]">
-                    <h2 className="text-3xl font-domine mb-10 text-center">
+                    <h2 className="text-3xl font-domine mb-5 text-center">
                         Funeral Details
                     </h2>
+                    <p className="text-center text-xl font-bold mb-10">
+                                Livestream will be provided and can be watched here.
+                            </p>
 
                     <div className="md:flex items-center gap-10">
                         {/* Image */}
@@ -73,10 +76,6 @@ export default function Funeral(): JSX.Element {
 
                         {/* Details */}
                         <div className="md:w-1/2 text-left">
-                            <p className="text-md mb-3 mt-4 md:mt-0">
-                                Livestream links will be provided and can be watched here.
-                            </p>
-
                             <p className="font-bold text-xl mb-3 text-[var(--clr-celadon)]">
                                 Schedule & Arrangements
                             </p>
@@ -100,7 +99,7 @@ export default function Funeral(): JSX.Element {
                             </p>
 
                             <p className="font-semibold mb-3 text-[var(--clr-celadon)]">
-                                <i className="fa-solid fa-lock"></i> Interment To Follow Immediately (Private event)
+                                <i className="fa-solid fa-lock"></i> Interment To Follow Immediately (Private event) - By Invitation Only
                             </p>
 
                             <p className="font-semibold text-[var(--clr-celadon)]">
@@ -108,7 +107,7 @@ export default function Funeral(): JSX.Element {
                             </p>
                             <p>Time: Immediately after service</p>
                             <p>
-                                Venue: St. Justus Church Hall, Rochester, UK
+                                Venue: St. Justus Church Hall, The Fairway, Rochester, UK
                             </p>
                         </div>
                     </div>
@@ -183,3 +182,8 @@ export default function Funeral(): JSX.Element {
         </section>
     );
 }
+
+
+
+
+
