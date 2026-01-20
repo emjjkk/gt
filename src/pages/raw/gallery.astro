@@ -1,0 +1,62 @@
+---
+import { supabase } from "../../db/supabase";
+
+const PASSWORD = 'vctbkkg2vt1,2-3';
+
+// Get the password from query param
+const url = new URL(Astro.request.url);
+const enteredPassword = url.searchParams.get("pw") ?? "";
+
+let imageUrls: { image_url: string }[] = [];
+
+if (!enteredPassword || enteredPassword !== PASSWORD) {
+  // Do not fetch anything if password wrong
+  imageUrls = [];
+} else {
+  const { data, error } = await supabase
+    .from<{ image_url: string }>("gallery_items")
+    .select("image_url");
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  imageUrls = data ?? [];
+}
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    {enteredPassword !== PASSWORD ? (
+      <div class="login">
+        <form method="get">
+          <input type="password" name="pw" placeholder="Enter password" />
+          <button type="submit">Unlock</button>
+        </form>
+      </div>
+    ) : (
+      <>
+        <div class="urls">
+          {imageUrls.length > 0
+            ? imageUrls
+                .map((item) => (
+                  <a
+                    href={item.image_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {item.image_url}
+                  </a>
+                ))
+                .reduce((prev, curr) => [prev, <br />, curr])
+            : "No image URLs found"}
+        </div>
+      </>
+    )}
+  </body>
+</html>
