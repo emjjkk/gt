@@ -15,13 +15,10 @@ export default function Funeral(): JSX.Element {
             className="dark:text-white dark:bg-black/[0.98] bg-[var(--clr-white)] w-full flex justify-center px-5 md:px-0"
         >
             <div className="py-20 max-w-6xl w-full border-t dark:border-slate-800 border-[var(--clr-celadon)]">
-                <h2 className="text-3xl font-domine mb-5 text-center">
+                <h2 className="text-3xl font-domine mb-10 text-center">
                     Funeral Details
                 </h2>
-                <p className="text-center text-xl font-bold mb-10">
-                    Livestream will be provided and can be watched here.
-                </p>
-                <div className="w-full flex items-center justify-center mb-5">
+                <div className="w-full flex items-center justify-center mb-10">
                     {/* Livestream Button */}
                     <button
                         onClick={() => setIsStreamOpen(true)}
