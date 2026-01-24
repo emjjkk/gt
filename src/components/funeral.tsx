@@ -5,7 +5,7 @@ export default function Funeral(): JSX.Element {
     const [isStreamOpen, setIsStreamOpen] = useState(false);
 
     // Set to null until livestream is ready
-    const youtubeLivestreamUrl = 'https://www.youtube.com/embed/Fw9hgttWzIg?autoplay=1&rel=0&modestbranding=1&controls=1';
+    const youtubeLivestreamUrl = null
     // Example when live: 
     // const youtubeLivestreamUrl = "https://www.youtube.com/embed/VIDEO_ID?autoplay=1&rel=0&modestbranding=1&controls=1";
 
@@ -25,7 +25,7 @@ export default function Funeral(): JSX.Element {
                     {/* Livestream Button */}
                     <button
                         onClick={() => setIsStreamOpen(true)}
-                        className="mb-5 w-full md:w-auto px-6 py-3 rounded-lg font-semibold text-white
+                        className="mb-5 w-full md:w-auto px-6 py-3 rounded-lg font-semibold text-[#105]
                                        bg-[var(--clr-celadon)] hover:opacity-90 transition shadow flex items-center gap-2"
                     >
                         <i className="fa-solid fa-circle-play"></i>
