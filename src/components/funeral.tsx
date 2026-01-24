@@ -5,8 +5,8 @@ export default function Funeral(): JSX.Element {
     const [isStreamOpen, setIsStreamOpen] = useState(false);
 
     // Set to null until livestream is ready
-    const youtubeLivestreamUrl = null;
-    // Example when live:
+    const youtubeLivestreamUrl = 'https://www.youtube.com/embed/Fw9hgttWzIg?autoplay=1&rel=0&modestbranding=1&controls=1';
+    // Example when live: 
     // const youtubeLivestreamUrl = "https://www.youtube.com/embed/VIDEO_ID?autoplay=1&rel=0&modestbranding=1&controls=1";
 
     return (
@@ -29,7 +29,7 @@ export default function Funeral(): JSX.Element {
                                        bg-[var(--clr-celadon)] hover:opacity-90 transition shadow flex items-center gap-2"
                     >
                         <i className="fa-solid fa-circle-play"></i>
-                        LIVE SOON: Service Of Songs @ St. Williams Church
+                        LIVE SOON: Service Of Songs @ St. Williams Church 
                     </button>
                 </div>
 
@@ -117,7 +117,7 @@ export default function Funeral(): JSX.Element {
                     onClick={() => setIsStreamOpen(false)}
                 >
                     <div
-                        className="relative w-full max-w-5xl aspect-video bg-black rounded-lg overflow-hidden"
+                        className="relative w-full max-w-6xl aspect-video bg-black rounded-lg overflow-hidden"
                         onClick={(e) => e.stopPropagation()}
                     >
                         <button
