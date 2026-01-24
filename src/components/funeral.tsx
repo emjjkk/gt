@@ -30,7 +30,7 @@ export default function Funeral(): JSX.Element {
                     </button>
                 </div>
 
-                <div className="md:flex items-center gap-10">
+                <div className="md:flex items-center gap-5">
                     {/* Image */}
                     <div className="md:w-1/3">
                         <img
@@ -42,7 +42,7 @@ export default function Funeral(): JSX.Element {
                     </div>
 
                     {/* Details */}
-                    <div className="md:w-1/3 text-left">
+                    <div className=" text-left">
 
                         <p className="font-bold text-xl mb-3 text-[var(--clr-celadon)]">
                             Schedule & Arrangements
@@ -79,8 +79,8 @@ export default function Funeral(): JSX.Element {
                         </p>
                     </div>
 
-                    <div className="w-1/3">
-                        <img src="/program.jpeg" alt="" className="w-full h-auto"/>
+                    <div className="">
+                        <img src="/program.jpeg" alt="" className="w-auto h-[280px] rounded-lg"/>
                     </div>
                 </div>
             </div>
