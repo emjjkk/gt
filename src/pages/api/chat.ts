@@ -2,6 +2,7 @@ export const prerender = false;
 
 import type { APIRoute } from "astro";
 import { KNOWLEDGE_TEXT } from "../../data/knowledge";
+import { KNOWLEDGE_TEXT2 } from "../../data/knowledge2";
 
 export const POST: APIRoute = async ({ request }) => {
   let data: any;
@@ -41,6 +42,7 @@ If the question is unrelated to the text, respond briefly, politely, and without
 
 INFORMATION:
 ${KNOWLEDGE_TEXT}
+${KNOWLEDGE_TEXT2}
 `;
   console.log(prompt)
   console.log("Prompt character count:", prompt.length);

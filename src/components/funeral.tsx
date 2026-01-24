@@ -1,189 +1,165 @@
-import React, { useEffect, useState, type JSX } from "react";
-import { supabase } from "../db/supabase";
-
-type Funeral = {
-    id: string;
-    date: string | null;
-    venue: string | null;
-    livestream_url: string | null;
-    status: "pending" | "scheduled" | "live" | "done";
-};
+import React, { useState, type JSX } from "react";
 
 export default function Funeral(): JSX.Element {
-    const [funeral, setFuneral] = useState<Funeral | null>(null);
-    const [loading, setLoading] = useState(true);
     const [isImageOpen, setIsImageOpen] = useState(false);
+    const [isStreamOpen, setIsStreamOpen] = useState(false);
 
-    useEffect(() => {
-        const fetchFuneral = async () => {
-            const { data, error } = await supabase
-                .from<Funeral>("funeral")
-                .select("*")
-                .order("created_at", { ascending: false })
-                .limit(1)
-                .single();
-
-            if (error) {
-                console.error("Funeral fetch error:", error);
-            } else {
-                setFuneral(data);
-            }
-
-            setLoading(false);
-        };
-
-        fetchFuneral();
-    }, []);
-
-    if (loading) {
-        return (
-            <section
-                id="funeral"
-                className="dark:text-white dark:bg-black/[0.98] bg-[var(--clr-white)] w-full flex justify-center"
-            >
-                <div className="py-20 max-w-6xl w-full border-t dark:border-slate-800 border-[var(--clr-celadon)] text-center">
-                    <h2 className="text-3xl font-domine mb-5">Funeral Details</h2>
-                    <p>Loading funeral details...</p>
-                </div>
-            </section>
-        );
-    }
-
-    if (!funeral) {
-        return (
-            <section
-                id="funeral"
-                className="dark:text-white dark:bg-black/[0.98] bg-[var(--clr-white)] w-full flex justify-center px-5 md:px-0"
-            >
-                <div className="py-20 max-w-6xl w-full border-t dark:border-slate-800 border-[var(--clr-celadon)]">
-                    <h2 className="text-3xl font-domine mb-5 text-center">
-                        Funeral Details
-                    </h2>
-                    <p className="text-center text-xl font-bold mb-10">
-                                Livestream will be provided and can be watched here.
-                            </p>
-
-                    <div className="md:flex items-center gap-10">
-                        {/* Image */}
-                        <div className="md:w-1/2">
-                            <img
-                                src="/invite.jpeg"
-                                alt="invite"
-                                onClick={() => setIsImageOpen(true)}
-                                className="cursor-zoom-in max-w-xl w-full mx-auto rounded-lg shadow-lg hover:opacity-90 transition"
-                            />
-                        </div>
-
-                        {/* Details */}
-                        <div className="md:w-1/2 text-left">
-                            <p className="font-bold text-xl mb-3 text-[var(--clr-celadon)]">
-                                Schedule & Arrangements
-                            </p>
-
-                            <p className="font-semibold text-[var(--clr-celadon)]">
-                                <i className="fa-solid fa-dove"></i> Service of Songs
-                            </p>
-                            <p>
-                                TIme: Thursday, February 19th 2026 · 5:30PM – 7:30PM
-                            </p>
-                            <p className="mb-3">
-                                Venue: St. Williams Church, Walderslade, Chatham, UK
-                            </p>
-
-                            <p className="font-semibold text-[var(--clr-celadon)]">
-                                <i className="fa-solid fa-cross"></i> Funeral Service
-                            </p>
-                            <p>TIme: Friday, February 20th 2026 · 10:00AM</p>
-                            <p className="mb-3">
-                                Venue: St. Williams Church, Walderslade, Chatham, UK
-                            </p>
-
-                            <p className="font-semibold mb-3 text-[var(--clr-celadon)]">
-                                <i className="fa-solid fa-lock"></i> Interment To Follow Immediately (Private event) - By Invitation Only
-                            </p>
-
-                            <p className="font-semibold text-[var(--clr-celadon)]">
-                                <i className="fa-solid fa-wine-glass"></i> Reception
-                            </p>
-                            <p>Time: Immediately after service</p>
-                            <p>
-                                Venue: St. Justus Church Hall, The Fairway, Rochester, UK
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Image Modal */}
-                {isImageOpen && (
-                    <div
-                        className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center px-4"
-                        onClick={() => setIsImageOpen(false)}
-                    >
-                        <div
-                            className="relative max-w-5xl w-full"
-                            onClick={(e) => e.stopPropagation()}
-                        >
-                            <button
-                                className="absolute -top-12 right-0 text-white text-4xl font-bold"
-                                onClick={() => setIsImageOpen(false)}
-                            >
-                                ×
-                            </button>
-
-                            <img
-                                src="/invite.jpeg"
-                                alt="invite enlarged"
-                                className="w-full rounded-lg shadow-2xl"
-                            />
-                        </div>
-                    </div>
-                )}
-            </section>
-        );
-    }
+    // Set to null until livestream is ready
+    const youtubeLivestreamUrl = null;
+    // Example when live:
+    // const youtubeLivestreamUrl = "https://www.youtube.com/embed/VIDEO_ID?autoplay=1&rel=0&modestbranding=1&controls=1";
 
     return (
-        <section className="dark:text-white dark:bg-black/[0.98] py-20 bg-[var(--clr-white)] border-t dark:border-slate-800 border-[var(--clr-celadon)]">
-            <div className="max-w-3xl mx-auto px-6 text-center">
-                <h2 className="text-3xl font-domine mb-10">Funeral Details</h2>
+        <section
+            id="funeral"
+            className="dark:text-white dark:bg-black/[0.98] bg-[var(--clr-white)] w-full flex justify-center px-5 md:px-0"
+        >
+            <div className="py-20 max-w-6xl w-full border-t dark:border-slate-800 border-[var(--clr-celadon)]">
+                <h2 className="text-3xl font-domine mb-5 text-center">
+                    Funeral Details
+                </h2>
+                <p className="text-center text-xl font-bold mb-10">
+                    Livestream will be provided and can be watched here.
+                </p>
+                <div className="w-full flex items-center justify-center mb-5">
+                    {/* Livestream Button */}
+                    <button
+                        onClick={() => setIsStreamOpen(true)}
+                        className="mb-5 w-full md:w-auto px-6 py-3 rounded-lg font-semibold text-white
+                                       bg-[var(--clr-celadon)] hover:opacity-90 transition shadow flex items-center gap-2"
+                    >
+                        <i className="fa-solid fa-circle-play"></i>
+                        LIVE SOON: Service Of Songs @ St. Williams Church
+                    </button>
+                </div>
 
-                {funeral.status === "pending" && (
-                    <p className="text-lg">
-                        Funeral date and venue are not confirmed yet.
-                    </p>
-                )}
+                <div className="md:flex items-center gap-10">
+                    {/* Image */}
+                    <div className="md:w-1/2">
+                        <img
+                            src="/invite.jpeg"
+                            alt="invite"
+                            onClick={() => setIsImageOpen(true)}
+                            className="cursor-zoom-in max-w-xl w-full mx-auto rounded-lg shadow-lg hover:opacity-90 transition"
+                        />
+                    </div>
 
-                {funeral.status === "scheduled" && funeral.date && funeral.venue && (
-                    <div className="space-y-2 text-lg">
-                        <p>
-                            <strong>Date & Time:</strong>{" "}
-                            {new Date(funeral.date).toLocaleString()}
+                    {/* Details */}
+                    <div className="md:w-1/2 text-left">
+
+                        <p className="font-bold text-xl mb-3 text-[var(--clr-celadon)]">
+                            Schedule & Arrangements
+                        </p>
+
+                        <p className="font-semibold text-[var(--clr-celadon)]">
+                            <i className="fa-solid fa-dove"></i> Service of Songs
                         </p>
                         <p>
-                            <strong>Venue:</strong> {funeral.venue}
+                            Time: Thursday, February 19th 2026 · 5:30PM – 7:30PM
+                        </p>
+                        <p className="mb-3">
+                            Venue: St. Williams Church, Walderslade, Chatham, UK
+                        </p>
+
+                        <p className="font-semibold text-[var(--clr-celadon)]">
+                            <i className="fa-solid fa-cross"></i> Funeral Service
+                        </p>
+                        <p>Time: Friday, February 20th 2026 · 10:00AM</p>
+                        <p className="mb-3">
+                            Venue: St. Williams Church, Walderslade, Chatham, UK
+                        </p>
+
+                        <p className="font-semibold mb-3 text-[var(--clr-celadon)]">
+                            <i className="fa-solid fa-lock"></i> Interment To Follow Immediately (Private event) - By Invitation Only
+                        </p>
+
+                        <p className="font-semibold text-[var(--clr-celadon)]">
+                            <i className="fa-solid fa-wine-glass"></i> Reception
+                        </p>
+                        <p>Time: Immediately after service</p>
+                        <p>
+                            Venue: St. Justus Church Hall, The Fairway, Rochester, UK
                         </p>
                     </div>
-                )}
-
-                {funeral.status === "live" && funeral.livestream_url && (
-                    <div className="space-y-3 text-lg">
-                        <p>The funeral is currently live.</p>
-                        <a
-                            href={funeral.livestream_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[var(--clr-celadon)] underline font-semibold"
-                        >
-                            View Livestream
-                        </a>
-                    </div>
-                )}
+                </div>
             </div>
+
+            {/* Image Modal */}
+            {isImageOpen && (
+                <div
+                    className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center px-4"
+                    onClick={() => setIsImageOpen(false)}
+                >
+                    <div
+                        className="relative max-w-5xl w-full"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <button
+                            className="absolute -top-12 right-0 text-white text-4xl font-bold"
+                            onClick={() => setIsImageOpen(false)}
+                        >
+                            ×
+                        </button>
+
+                        <img
+                            src="/invite.jpeg"
+                            alt="invite enlarged"
+                            className="w-full rounded-lg shadow-2xl"
+                        />
+                    </div>
+                </div>
+            )}
+
+            {/* Livestream Modal */}
+            {isStreamOpen && (
+                <div
+                    className="fixed inset-0 z-50 bg-black/[0.95] flex items-center justify-center px-4"
+                    onClick={() => setIsStreamOpen(false)}
+                >
+                    <div
+                        className="relative w-full max-w-5xl aspect-video bg-black rounded-lg overflow-hidden"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <button
+                            className="absolute -top-12 right-0 text-white text-4xl font-bold"
+                            onClick={() => setIsStreamOpen(false)}
+                        >
+                            ×
+                        </button>
+
+                        {youtubeLivestreamUrl ? (
+                            <div className="relative w-full h-full">
+                                <iframe
+                                    src={youtubeLivestreamUrl}
+                                    title="Livestream"
+                                    allow="autoplay; encrypted-media"
+                                    allowFullScreen
+                                    className="w-full h-full"
+                                />
+
+                                {/* Interaction-blocking overlay */}
+                                <div
+                                    className="absolute inset-0"
+                                    style={{
+                                        pointerEvents: "auto",
+                                        cursor: "default",
+                                    }}
+                                    onContextMenu={(e) => e.preventDefault()}
+                                />
+                            </div>
+                        ) : (
+                            <div className="w-full h-full flex items-center justify-center bg-neutral-900 text-white text-lg font-semibold">
+                                Livestream will be shown here
+                            </div>
+                        )}
+                    </div>
+                </div>
+            )}
         </section>
     );
 }
 
+/*
+<iframe width="990" height="557" src="https://www.youtube.com/embed/Fw9hgttWzIg" title="🔴 Crystal Bay Beach Resort | Lamai | Koh Samui | Thailand | Live Beach Webcam | 2160p 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-
-
-
+*/
