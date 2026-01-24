@@ -42,7 +42,7 @@ export default function Funeral(): JSX.Element {
                     </div>
 
                     {/* Details */}
-                    <div className=" text-left">
+                    <div className=" text-left mt-5 md:mt-0">
 
                         <p className="font-bold text-xl mb-3 text-[var(--clr-celadon)]">
                             Schedule & Arrangements
@@ -80,7 +80,7 @@ export default function Funeral(): JSX.Element {
                     </div>
 
                     <div className="">
-                        <img src="/program.jpeg" alt="" className="w-auto h-[280px] rounded-lg"/>
+                        <img src="/program.jpeg" alt="" className="w-full md:w-auto md:h-[280px] rounded-lg mt-5 md:mt-0"/>
                     </div>
                 </div>
             </div>
