@@ -32,7 +32,7 @@ export default function Funeral(): JSX.Element {
 
                 <div className="md:flex items-center gap-10">
                     {/* Image */}
-                    <div className="md:w-1/2">
+                    <div className="md:w-1/3">
                         <img
                             src="/invite.jpeg"
                             alt="invite"
@@ -42,7 +42,7 @@ export default function Funeral(): JSX.Element {
                     </div>
 
                     {/* Details */}
-                    <div className="md:w-1/2 text-left">
+                    <div className="md:w-1/3 text-left">
 
                         <p className="font-bold text-xl mb-3 text-[var(--clr-celadon)]">
                             Schedule & Arrangements
@@ -77,6 +77,10 @@ export default function Funeral(): JSX.Element {
                         <p>
                             Venue: St. Justus Church Hall, The Fairway, Rochester, UK
                         </p>
+                    </div>
+
+                    <div className="w-1/3">
+                        <img src="/program.jpeg" alt="" className="w-full h-auto"/>
                     </div>
                 </div>
             </div>
