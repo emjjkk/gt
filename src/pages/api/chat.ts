@@ -53,7 +53,7 @@ ${KNOWLEDGE_TEXT}
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "moonshotai/kimi-k2:free",
+        model: "arcee-ai/trinity-mini:free",
         messages: [
           { role: "system", content: prompt },
           { role: "user", content: message }
