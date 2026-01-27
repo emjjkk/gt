@@ -53,7 +53,7 @@ ${KNOWLEDGE_TEXT}
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "xiaomi/mimo-v2-flash:free",
+        model: "moonshotai/kimi-k2:free",
         messages: [
           { role: "system", content: prompt },
           { role: "user", content: message }
