@@ -183,6 +183,7 @@ export default function ThoughtsPrayers(): JSX.Element {
                                 type="text"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
+                                required
                                 placeholder="Your name"
                                 className="p-3 border border-gray-300 dark:border-neutral-700 rounded-lg w-full mb-2"
                             />
@@ -297,4 +298,5 @@ export default function ThoughtsPrayers(): JSX.Element {
             )}
         </>
     );
+
 }
