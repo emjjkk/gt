@@ -5,7 +5,7 @@ export default function Funeral(): JSX.Element {
     const [isStreamOpen, setIsStreamOpen] = useState(false);
 
     // Set to null until livestream is ready
-    const youtubeLivestreamUrl = "https://www.youtube.com/embed/rnXIjl_Rzy4?autoplay=1&rel=0&modestbranding=1&controls=1"
+    const youtubeLivestreamUrl = ""
     // Example when live: 
     // const youtubeLivestreamUrl = "https://www.youtube.com/embed/rnXIjl_Rzy4?autoplay=1&rel=0&modestbranding=1&controls=1";
 
@@ -164,4 +164,5 @@ export default function Funeral(): JSX.Element {
 <iframe width="990" height="557" src="https://www.youtube.com/embed/Fw9hgttWzIg" title="🔴 Crystal Bay Beach Resort | Lamai | Koh Samui | Thailand | Live Beach Webcam | 2160p 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 */
+
 
