@@ -1,13 +1,42 @@
-import React, { useState, type JSX } from "react";
+import { useState, useEffect, type JSX } from "react";
+import { supabase } from "../db/supabase";
 
 export default function Funeral(): JSX.Element {
     const [isImageOpen, setIsImageOpen] = useState(false);
     const [isStreamOpen, setIsStreamOpen] = useState(false);
+    const [youtubeLivestreamUrl, setYoutubeLivestreamUrl] = useState("");
 
-    // Set to null until livestream is ready
-    const youtubeLivestreamUrl = ""
-    // Example when live: 
-    // const youtubeLivestreamUrl = "https://www.youtube.com/embed/rnXIjl_Rzy4?autoplay=1&rel=0&modestbranding=1&controls=1";
+    useEffect(() => {
+        const fetchLink = async () => {
+            try {
+                const { data, error } = await supabase
+                    .from("link")
+                    .select("video_id")
+                    .single();
+
+                if (error) throw error;
+
+                console.log(youtubeLivestreamUrl)
+
+                if (data?.video_id) {
+                    setYoutubeLivestreamUrl(`https://www.youtube.com/embed/${data.video_id}?autoplay=1&rel=0&modestbranding=1&controls=1`);
+                } else {
+                    setYoutubeLivestreamUrl("");
+                }
+            } catch (error) {
+                console.error("Error fetching link from Supabase:", error);
+            }
+        };
+
+
+        // Fetch immediately
+        fetchLink();
+
+        // Set up interval to fetch every 5 seconds
+        const interval = setInterval(fetchLink, 5000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <section
@@ -150,7 +179,7 @@ export default function Funeral(): JSX.Element {
                             </div>
                         ) : (
                             <div className="w-full h-full flex items-center justify-center bg-neutral-900 text-white text-lg font-semibold">
-                                Livestream will be shown here
+                                The livestream for Service of Songs will appear here - hang tight!
                             </div>
                         )}
                     </div>
