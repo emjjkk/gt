@@ -3,7 +3,7 @@ import { supabase } from "../db/supabase";
 
 export default function Funeral(): JSX.Element {
     const [isImageOpen, setIsImageOpen] = useState(false);
-    const [isStreamOpen, setIsStreamOpen] = useState(true);
+    const [isStreamOpen, setIsStreamOpen] = useState(false);
     const [youtubeLivestreamUrl, setYoutubeLivestreamUrl] = useState("");
 
     useEffect(() => {
