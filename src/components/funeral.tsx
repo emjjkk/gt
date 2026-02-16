@@ -179,7 +179,7 @@ export default function Funeral(): JSX.Element {
                             </div>
                         ) : (
                             <div className="w-full h-full flex items-center justify-center bg-neutral-900 text-white text-lg font-semibold">
-                                The livestream for Service of Songs will appear here - hang tight!
+                                The livestream for Service of Songs will appear here. Stay tuned!
                             </div>
                         )}
                     </div>
