@@ -19,7 +19,7 @@ export default function Funeral(): JSX.Element {
                 console.log(youtubeLivestreamUrl)
 
                 if (data?.video_id) {
-                    setYoutubeLivestreamUrl(`https://www.youtube.com/embed/${data.video_id}?autoplay=1&rel=0&modestbranding=1&controls=1`);
+                    setYoutubeLivestreamUrl(`${data.video_id}`);
                 } else {
                     setYoutubeLivestreamUrl("");
                 }
@@ -27,6 +27,8 @@ export default function Funeral(): JSX.Element {
                 console.error("Error fetching link from Supabase:", error);
             }
         };
+
+        // https://www.youtube.com/embed/${data.video_id}?autoplay=1&rel=0&modestbranding=1&controls=1
 
 
         // Fetch immediately
@@ -193,5 +195,6 @@ export default function Funeral(): JSX.Element {
 <iframe width="990" height="557" src="https://www.youtube.com/embed/Fw9hgttWzIg" title="🔴 Crystal Bay Beach Resort | Lamai | Koh Samui | Thailand | Live Beach Webcam | 2160p 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 */
+
 
 
