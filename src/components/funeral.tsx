@@ -173,7 +173,7 @@ export default function Funeral(): JSX.Element {
                             </div>
                         ) : (
                             <div className="w-full h-full flex items-center justify-center bg-neutral-900 text-white text-lg font-semibold">
-                                The livestream for Service of Songs will appear here. Stay tuned!
+                                The livestream for Funeral Service will appear here tommorow. Stay tuned!
                             </div>
                         )}
                     </div>
@@ -187,6 +187,7 @@ export default function Funeral(): JSX.Element {
 <iframe width="990" height="557" src="https://www.youtube.com/embed/Fw9hgttWzIg" title="🔴 Crystal Bay Beach Resort | Lamai | Koh Samui | Thailand | Live Beach Webcam | 2160p 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 */
+
 
 
 
