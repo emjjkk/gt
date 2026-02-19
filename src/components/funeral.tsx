@@ -3,7 +3,7 @@ import { supabase } from "../db/supabase";
 
 export default function Funeral(): JSX.Element {
     const [isImageOpen, setIsImageOpen] = useState(false);
-    const [isStreamOpen, setIsStreamOpen] = useState(false);
+    const [isStreamOpen, setIsStreamOpen] = useState(true);
     const [youtubeLivestreamUrl, setYoutubeLivestreamUrl] = useState("");
 
     useEffect(() => {
@@ -187,6 +187,7 @@ export default function Funeral(): JSX.Element {
 <iframe width="990" height="557" src="https://www.youtube.com/embed/Fw9hgttWzIg" title="🔴 Crystal Bay Beach Resort | Lamai | Koh Samui | Thailand | Live Beach Webcam | 2160p 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 */
+
 
 
 
