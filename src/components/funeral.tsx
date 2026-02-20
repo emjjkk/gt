@@ -50,15 +50,6 @@ export default function Funeral(): JSX.Element {
                     Funeral Details
                 </h2>
                 <div className="w-full flex items-center justify-center mb-10">
-                    {/* Livestream Button */}
-                    <button
-                        onClick={() => setIsStreamOpen(true)}
-                        className="mb-5 w-full md:w-auto px-6 py-3 rounded-lg font-semibold text-[#105] cursor-pointer
-                                       bg-[var(--clr-celadon)] hover:opacity-90 transition shadow flex items-center gap-2"
-                    >
-                        <i className="fa-solid fa-circle-play"></i>
-                        LIVE SOON: Service Of Songs @ St. Williams Church 
-                    </button>
                 </div>
 
                 <div className="md:flex items-center gap-5">
@@ -187,6 +178,7 @@ export default function Funeral(): JSX.Element {
 <iframe width="990" height="557" src="https://www.youtube.com/embed/Fw9hgttWzIg" title="🔴 Crystal Bay Beach Resort | Lamai | Koh Samui | Thailand | Live Beach Webcam | 2160p 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 */
+
 
 
 
