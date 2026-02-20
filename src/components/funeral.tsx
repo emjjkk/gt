@@ -145,7 +145,7 @@ export default function Funeral(): JSX.Element {
             {/* Livestream Modal */}
             {isStreamOpen && (
                 <div
-                    className="fixed inset-0 z-50 bg-black/[0.95] flex items-center justify-center px-4"
+                    className="fixed inset-0 z-50 bg-black/[0.95] flex items-center justify-center md:px-4"
                     onClick={() => setIsStreamOpen(false)}
                 >
                     <div
@@ -187,6 +187,7 @@ export default function Funeral(): JSX.Element {
 <iframe width="990" height="557" src="https://www.youtube.com/embed/Fw9hgttWzIg" title="🔴 Crystal Bay Beach Resort | Lamai | Koh Samui | Thailand | Live Beach Webcam | 2160p 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 */
+
 
 
 
